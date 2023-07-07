@@ -4,10 +4,18 @@
 $conn = new mysqli('localhost', 'root', '', 'expensemanager');
 // Check the connection
 if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}
+
 ?>
 <html>
     <head>
         <meta charset="UTF-8">
+        
+        <style>
+    /* Hide the scrollbar */
+    .no-scrollbar {
+      overflow: hidden;
+    }
+  </style>
         
         <!--add Bootstrap-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
@@ -38,12 +46,17 @@ if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}
         
         <!--css part-->
         <style>
-            #frame { 
+            
+            .navbar-toggler-icon{
+                color: #000;}
+
+            iframe {
+                overflow-y: hidden;
+                overflow-x: hidden;
+                
                 width: 100%;
                 height: 100%;
             }
-            .navbar-toggler-icon{
-                color: #000;
         </style>
         
         <title>Expence Manager</title>
@@ -106,7 +119,7 @@ if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}
                 <!--profile-->
                 <li style="padding-top: 13px">
                     <?php
-                    $sql = "SELECT * FROM temp WHERE id='3'";
+                    $sql = "SELECT * FROM temp WHERE id='1'";
                     $result = $conn->query($sql);
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
@@ -152,18 +165,19 @@ if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}
 
             
             <!--item 1-->
-            <div class="tab-pane fade" id="Dashboard" style="height: 1;"><iframe id="frame" src="b.php"></iframe></div>
+            <div class="tab-pane fade" id="Dashboard" style="height: 100%;"><iframe src="Profile.php"></iframe></div>
             
             <!--item 2-->
-            <div class="tab-pane fade" id="reports" style="height:1 ;"><iframe id="frame" src="ss.php"></iframe></div>
+            <div class="tab-pane fade" id="reports" style="height:1000px"><iframe src="Our_team.php"></iframe></div>
 
-            <div class="tab-pane fade" id="team" style="height:1 ;"><iframe src="Profile.php"></iframe></div>
+            <div class="tab-pane fade" id="team"  style="height:1000px"><iframe src="Our_team.php" class="no-scrollbar"></iframe></div>
             
             <div class="tab-pane fade" id="list-reports" role="tabpanel" aria-labelledby="list-reports-list" style="height:1 ;">reports</div>
             <div class="tab-pane fade" id="list-task" role="tabpanel" aria-labelledby="list-task-list" style="height:1 ;">task</div>
             <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list" style="height:1 ;">profile</div>
         </div>
     </div>
+    
 </main>
 <!--Main layout-->
     
