@@ -1,17 +1,21 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+<?php
+// Establish a connection to the MySQL server
+$conn = new mysqli('localhost', 'root', '', 'expensemanager');
+// Check the connection
+if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}
+
+?>
 <html>
     <head>
         <meta charset="UTF-8">
         
-        <!--add external files-->
-        <link rel="Stylesheet" href="css/navbar.css">
-        <script src="navbar.js"></script>
-        
+        <style>
+    /* Hide the scrollbar */
+    .no-scrollbar {
+      overflow: hidden;
+    }
+  </style>
         
         <!--add Bootstrap-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
@@ -21,6 +25,7 @@ and open the template in the editor.
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        
         
         <!-- Font Awesome -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
@@ -32,18 +37,25 @@ and open the template in the editor.
         <!-- MDB -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.0/mdb.min.js"></script>
         
+        <!--add external files-->
+        <link rel="Stylesheet" href="css/navbar.css">  
+        <script src="navbar.js"></script>
         
-        <!--js part-->
+        
         
         
         <!--css part-->
         <style>
-            #frame { 
+            
+            .navbar-toggler-icon{
+                color: #000;}
+
+            iframe {
+                overflow-y: hidden;
+                overflow-x: hidden;
+                
                 width: 100%;
                 height: 100%;
-            }
-            .navbar-toggler-icon{
-                color: #000;
             }
         </style>
         
@@ -58,18 +70,14 @@ and open the template in the editor.
         <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
           <div class="position-sticky">
             <div class="list-group list-group-flush mx-3 mt-4">
-              <a class="list-group-item list-group-item-action py-2 ripple" data-bs-toggle="list" id="list-proposals-list" href="#list-proposals" role="tab" aria-controls="list-proposals" aria-selected="true" ><i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Main dashboard</span></a>
-              <a class="list-group-item list-group-item-action py-2 ripple" data-bs-toggle="list" id="list-dashBoard-list" href="#list-dashBoard" role="tab" aria-controls="list-dashBoard" aria-selected="false" tabindex="-1"><i class="fas fa-chart-area fa-fw me-3"></i><span>Webiste traffic</span></a>
-              <a href="#" class="list-group-item list-group-item-action py-2 ripple" data-bs-toggle="list"><i class="fas fa-lock fa-fw me-3"></i><span>Password</span></a>
-              <a href="#" class="list-group-item list-group-item-action py-2 ripple" data-bs-toggle="list"><i class="fas fa-chart-line fa-fw me-3"></i><span>Analytics</span></a>
-              <a href="#" class="list-group-item list-group-item-action py-2 ripple" data-bs-toggle="list"><i class="fas fa-chart-pie fa-fw me-3"></i><span>SEO</span></a>
-              <a href="#" class="list-group-item list-group-item-action py-2 ripple" data-bs-toggle="list"><i class="fas fa-chart-bar fa-fw me-3"></i><span>Orders</span></a>
-              <a href="#" class="list-group-item list-group-item-action py-2 ripple" data-bs-toggle="list"><i class="fas fa-globe fa-fw me-3"></i><span>International</span></a>
-              <a href="#" class="list-group-item list-group-item-action py-2 ripple" data-bs-toggle="list"><i class="fas fa-building fa-fw me-3"></i><span>Partners</span></a>
-              <a href="b.html" class="list-group-item list-group-item-action py-2 ripple" data-bs-toggle="list"><i class="fas fa-calendar fa-fw me-3"></i><span>Calendar</span></a>
-              <a href="#" class="list-group-item list-group-item-action py-2 ripple" data-bs-toggle="list"><i class="fas fa-users fa-fw me-3"></i><span>Users</span></a>
-              <a href="#" class="list-group-item list-group-item-action py-2 ripple" data-bs-toggle="list"><i class="fas fa-money-bill fa-fw me-3"></i><span>Sales</span></a>
-              
+                <!--item 1-->
+                <a class="list-group-item list-group-item-action py-2 ripple" data-bs-toggle="list" href="#Dashboard"><i class="fas fa-gauge-high fa-fw me-3"></i><span>Dashboard</span></a>
+                <!--item 1-->
+                <a class="list-group-item list-group-item-action py-2 ripple" data-bs-toggle="list" href="#reports"><i class="fas fa-chart-line fa-fw me-3"></i><span>Reports</span></a>
+                <!--item 2-->
+                <a class="list-group-item list-group-item-action py-2 ripple" data-bs-toggle="list" href="#team"><i class="fas fa-users fa-fw me-3"></i><span>Our Team</span></a>
+                <a href="#" class="list-group-item list-group-item-action py-2 ripple" data-bs-toggle="list"><i class="fas fa-comment-dots fa-fw me-3"></i><span>Feedback</span></a>
+                <a href="#" class="list-group-item list-group-item-action py-2 ripple" data-bs-toggle="list"><i class="fas fa-headset fa-fw me-3"></i><span>Contact Us</span></a>
             </div>
           </div>
         </nav>
@@ -91,7 +99,6 @@ and open the template in the editor.
             <a class="navbar-brand" class="navbar-nav d-flex justify-content-end align-items-center" href="#">
                 <p> logo</p>
             </a>
-            
 
             <!-- Right links -->
             <ul  class="navbar-nav ms-auto d-flex flex-row"> 
@@ -110,16 +117,36 @@ and open the template in the editor.
                 <li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
                 
                 <!--profile-->
-                <li style="padding-top: 13px">Name &nbsp;</li>
+                <li style="padding-top: 13px">
+                    <?php
+                    $sql = "SELECT * FROM temp WHERE id='1'";
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            $username = $row["Name"];
+                            echo $username;
+                        }
+                    }
+                    $conn->close();
+                    ?>&nbsp;</li>
                 <li class="nav-item dropdown" aria-labelledby="navbarDropdownMenuLink">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="true">
-                      <img src="a.jpg" class="rounded-circle" height="40" alt="ProPic" loading="lazy" />
+                      <img src="Images/propic.jpg" class="rounded-circle" height="40" alt="ProPic" loading="lazy" />
                     </a>
+                    
+                    <!--list-group list-group-flush mx-3 mt-4-->
                     <ul  class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="#"><i class="far fa-user"></i><span>&nbsp;&nbsp;&nbsp;My profile</span></a></li>
-                      <li><a class="dropdown-item" href="#">Settings</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#"><i class="fas fa-right-from-bracket"></i><span>&nbsp;&nbsp;&nbsp;Logout</span></a></li>
+                        <li><a class="dropdown-item" href=profile.php><i class="far fa-user"></i><span>&nbsp;&nbsp;&nbsp;My profile</span></a></li>
+                        
+                        <!-- Scrollable modal -->
+                        <div class="modal-dialog modal-dialog-scrollable" id="teamm">
+                        </div>
+                        
+                        
+                        
+                        <li><a class="dropdown-item"  data-bs-toggle="list" href="#"><i class="fas fa-circle fa-xs" style="color: #00cd01"></i><span>&nbsp;&nbsp;&nbsp;Post</span></a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item"  data-bs-toggle="list" href="#"><i class="fas fa-right-from-bracket"></i><span>&nbsp;&nbsp;&nbsp;Logout</span></a></li>
                     </ul>
                 </li>
                 <li>&nbsp;</li>            
@@ -131,30 +158,26 @@ and open the template in the editor.
     <!--Main layout-->
 <main style="margin-top: 90px;">
     <div id="content">
-        
+ 
         <!--Manu bar items-->
         <div class="tab-content" id="nav-tabContent">
             
+
+            
             <!--item 1-->
-            <div class="tab-pane fade" id="list-dashBoard" role="tabpanel" aria-labelledby="list-dashBoard-list" style="height: 1;">
-                <iframe id="frame" src="b.php" height=* width=*></iframe>
-            </div>
+            <div class="tab-pane fade" id="Dashboard" style="height: 100%;"><iframe src="Profile.php"></iframe></div>
             
             <!--item 2-->
-            <div class="tab-pane fade" id="list-proposals" role="tabpanel" aria-labelledby="list-proposals-list" style="height:1 ;">
-                <iframe id="frame" src="ss.php" frameborder="0"></iframe>
-                
-            </div>
+            <div class="tab-pane fade" id="reports" style="height:1000px"><iframe src="Our_team.php"></iframe></div>
+
+            <div class="tab-pane fade" id="team"  style="height:1000px"><iframe src="Our_team.php" class="no-scrollbar"></iframe></div>
             
-            
-            <div class="tab-pane fade" id="list-users" role="tabpanel" aria-labelledby="list-users-list" style="height:1 ;">
-                                <iframe src="b.php" ></iframe>
-            </div>
             <div class="tab-pane fade" id="list-reports" role="tabpanel" aria-labelledby="list-reports-list" style="height:1 ;">reports</div>
             <div class="tab-pane fade" id="list-task" role="tabpanel" aria-labelledby="list-task-list" style="height:1 ;">task</div>
             <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list" style="height:1 ;">profile</div>
         </div>
     </div>
+    
 </main>
 <!--Main layout-->
     
