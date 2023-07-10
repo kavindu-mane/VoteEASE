@@ -38,8 +38,7 @@ if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.0/mdb.min.js"></script>
         
         <!--add external files-->
-        <link rel="Stylesheet" href="css/navbar.css">  
-        <script src="navbar.js"></script>
+        <link rel="Stylesheet" href="css/navbar.css">
         
         
         
@@ -72,7 +71,10 @@ if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}
             <div class="list-group list-group-flush mx-3 mt-4">
                 <!--item 1-->
                 <a class="list-group-item list-group-item-action py-2 ripple" data-bs-toggle="list" href="#Dashboard"><i class="fas fa-gauge-high fa-fw me-3"></i><span>Dashboard</span></a>
+                <a class="list-group-item list-group-item-action py-2 ripple" data-bs-toggle="list" href="#Dashboardf"><i class="fas fa-gauge-high fa-fw me-3"></i><span>Dashboard_</span></a>
                 <!--item 1-->
+                <a class="list-group-item list-group-item-action py-2 ripple" data-bs-toggle="list" href="#proposal"><i class="fas fa-file-alt fa-fw me-3"></i><span>Proposals</span></a>
+
                 <a class="list-group-item list-group-item-action py-2 ripple" data-bs-toggle="list" href="#reports"><i class="fas fa-chart-line fa-fw me-3"></i><span>Reports</span></a>
                 <!--item 2-->
                 <a class="list-group-item list-group-item-action py-2 ripple" data-bs-toggle="list" href="#team"><i class="fas fa-users fa-fw me-3"></i><span>Our Team</span></a>
@@ -164,6 +166,8 @@ if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}
             
             <!--item 1-->
             <div class="tab-pane fade" id="Dashboard" style="height: 1000px;"><iframe src="Login.php"></iframe></div>
+            <div class="tab-pane fade" id="Dashboardf" style="height: 1000px;"><iframe src="dashBoard.php"></iframe></div>
+            <div class="tab-pane fade" id="proposal" style="height: 1000px;"><iframe src="proposalsContents.php"></iframe></div>
             
             <!--item 2-->
             <div class="tab-pane fade" id="reports" style="height:1000px"><iframe src=""></iframe></div>
