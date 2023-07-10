@@ -27,6 +27,21 @@ if ($conn->connect_error) {
         <meta charset="UTF-8">
         <title></title>
         
+        <style>
+			/* Hide scrollbar for Chrome, Safari and Opera */
+            body::-webkit-scrollbar {
+                display: none;
+            }
+
+            /* Hide scrollbar for IE, Edge and Firefox */
+            body {
+                -ms-overflow-style: none;
+                /* IE and Edge */
+                scrollbar-width: none;
+                /* Firefox */
+            }
+        </style>
+        
         <!--add external files-->
         <link rel="Stylesheet" href="css/navbar.css">
         <script src="navbar.js"></script>
@@ -53,7 +68,7 @@ if ($conn->connect_error) {
       <div class="col">
         <nav class="bg-light rounded-3 p-3 mb-4">
           <ol class="breadcrumb mb-0">
-            <li><a href="index.php">Home </a></li>
+            <li>Home</li>
             <li>&nbsp;&nbsp; > &nbsp;&nbsp;</li>
             <li class="active">Our Team</li>
           </ol>
