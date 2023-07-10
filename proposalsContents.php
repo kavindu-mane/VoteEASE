@@ -32,9 +32,16 @@
     <!-- Font Awesome -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
     <style>
-body{
-                overflow-y: visible;
-                overflow-x: hidden;
+body::-webkit-scrollbar {
+                display: none;
+            }
+
+            /* Hide scrollbar for IE, Edge and Firefox */
+            body {
+                -ms-overflow-style: none;
+                /* IE and Edge */
+                scrollbar-width: none;
+                /* Firefox */
             }
         .aprovedHedding {
   color: #141817;
@@ -193,9 +200,7 @@ body{
                 <td>Jhon</td>
                 <td>Rs. 5000</td>
                 <td>Hasan</td>
-                <td><button type="button" class="btn btn-success">Aprrove</button>
-                <button type="button" class="btn btn-danger">Reject</button>
-                </td>
+                <td><a href="proposal.php" class="btn btn-primary">Review</a></td>
               </tr>
               <tr>
                 <th scope="row">2</th>
@@ -203,9 +208,7 @@ body{
                 <td>Laka</td>
                 <td>Rs. 15000</td>
                 <td>Haasini</td>
-                <td><button type="button" class="btn btn-success">Aprrove</button>
-                <button type="button" class="btn btn-danger">Reject</button>
-                </td>
+                <td><a href="proposal.php" class="btn btn-primary">Review</a></td>
               </tr>
               <tr>
                 <th scope="row">3</th>
@@ -213,9 +216,7 @@ body{
                 <td>Kumaar</td>
                 <td>Rs. 500000</td>
                 <td>Hasan</td>
-                <td><button type="button" class="btn btn-success">Aprrove</button>
-                <button type="button" class="btn btn-danger">Reject</button>
-                </td>
+                <td><a href="proposal.php" class="btn btn-primary">Review</a></td>
               </tr>
             </tbody>
           </table>
@@ -526,9 +527,7 @@ body{
                 <td>Jhon</td>
                 <td>Rs. 5000</td>
                 <td>Hasan</td>
-                <td><button type="button" class="btn btn-success">Aprrove</button>
-                <button type="button" class="btn btn-danger">Reject</button>
-                </td>
+                <td><a href="proposal.php" class="btn btn-primary">Review</a></td>
               </tr>
               <tr>
                 <th scope="row">2</th>
@@ -536,9 +535,7 @@ body{
                 <td>Laka</td>
                 <td>Rs. 15000</td>
                 <td>Haasini</td>
-                <td><button type="button" class="btn btn-success">Aprrove</button>
-                <button type="button" class="btn btn-danger">Reject</button>
-                </td>
+                <td><a href="proposal.php" class="btn btn-primary">Review</a></td>
               </tr>
               <tr>
                 <th scope="row">3</th>
@@ -546,9 +543,7 @@ body{
                 <td>Kumaar</td>
                 <td>Rs. 500000</td>
                 <td>Hasan</td>
-                <td><button type="button" class="btn btn-success">Aprrove</button>
-                <button type="button" class="btn btn-danger">Reject</button>
-                </td>
+                <td><a href="proposal.php" class="btn btn-primary">Review</a></td>
               </tr>
             </tbody>
           </table>
