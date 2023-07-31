@@ -75,36 +75,8 @@ $con = mysqli_connect($server, $userName, $password, $dbName);
 </head>
 
 <body>
-  <!--php for connect Data base and get Data from Table-->
-  <?php
-  // Declare Variables
-  // $server = "localhost";
-  // $userName = "root";
-  // $password = "";
-  // $dbName = "expensemanager";
-
-  // // starting Connection with Database
-
-  // $con = mysqli_connect($server, $userName, $password, $dbName);
-
-  // if (mysqli_connect_errno()) {
-  //   echo "Failed To connect with Database Server";
-  //   exit();
-  // }
-  // echo "Connected To database";
-
-  //SQL Query and Fetching Data from Table
-  //queries
-  // $queryforapproved = "SELECT * from proposals WHERE Status = 'Approved'";
-  // $queryforrejected = "SELECT * from rejectedproposals Status = 'Rejected'";
-  // $queryforpending = "SELECT * from pendingproposal Status = 'Peending'"
-  //Creating Results Variables
-  // $resultforapproved = mysqli_query($con, $queryforapproved);
-  // $resultforrejected = mysqli_query($con,$queryforrejected);
-  // $resultforpending = mysqli_query($con,$queryforpending);
 
 
-  ?>
   <!--off canva start-->
   <!--Aproved Proposals canva body start-->
   <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdropAP" aria-labelledby="staticBackdropAPLabel" style="width: 100%;">
@@ -385,7 +357,7 @@ $con = mysqli_connect($server, $userName, $password, $dbName);
             </h3>
             <ul class="d-flex list-unstyled mt-auto">
               <li class="me-auto">
-                <span class="mt-3"><img src="https://cdn-icons-png.flaticon.com/512/5610/5610944.png" alt="Aproved Proposals" width="32" height="32" class="rounded-circle border border-white mt-3" />
+                <span class="mt-3"><img src="https://cdn-icons-png.flaticon.com/512/5610/5610944.png" alt="Aproved Proposals" width="60" height="60" class="rounded-circle border border-white mt-3" />
                   <p class="h6 mt-3">
                     <?php
                     $queryApCard = "SELECT * FROM proposal WHERE Status =" . "'Approved';";
@@ -418,7 +390,7 @@ $con = mysqli_connect($server, $userName, $password, $dbName);
             <ul class="d-flex list-unstyled mt-auto">
               <li class="me-auto">
                 <span>
-                  <img src="https://static.vecteezy.com/system/resources/previews/017/178/032/original/round-cross-mark-symbol-with-transparent-background-free-png.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white" />
+                  <img src="https://w7.pngwing.com/pngs/68/344/png-transparent-rejected-stamp-denied-reject-rejection-decline-refuse-deny-thumbnail.png" alt="Bootstrap" width="60" height="60" class="rounded-circle border border-white" />
                   <p class="h6 mt-3">
                     <?php
                     $queryRpCard = "SELECT * FROM proposal WHERE Status =" . "'Rejected';";
@@ -450,7 +422,7 @@ $con = mysqli_connect($server, $userName, $password, $dbName);
             <ul class="d-flex list-unstyled mt-auto">
               <li class="me-auto">
                 <span>
-                  <img src="https://static.vecteezy.com/system/resources/previews/004/607/677/original/caution-danger-sign-free-vector.jpg" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white" />
+                  <img src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTEwL3JtNTg0LWVsZW1lbnQtMDIyLTZfMS5wbmc.png" alt="Bootstrap" width="60" height="60" class="rounded-circle border border-white" />
                   <p class="h6 mt-3" style="color: black">
                     <?php
                     $queryPpCard = "SELECT * FROM proposal WHERE Status =" . "'Pending';";
