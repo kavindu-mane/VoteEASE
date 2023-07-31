@@ -1,3 +1,18 @@
+<!--Database Connection Start-->
+<?php
+// Declare Variables
+$server = "localhost";
+$userName = "root";
+$password = "";
+$dbName = "expensemanager";
+
+// starting Connection with Database
+
+$con = mysqli_connect($server, $userName, $password, $dbName);
+?>
+<!--Database Connection end-->
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,6 +45,7 @@
 
     .aprovedHedding {
       color: #141817;
+
     }
 
     .pendingHedding {
@@ -38,6 +54,10 @@
 
     .ProposalCard:hover {
       transform: scale(1.05);
+    }
+
+    .tableLink.a {
+      text-decoration: none;
     }
 
     .tableBody {
@@ -58,30 +78,30 @@
   <!--php for connect Data base and get Data from Table-->
   <?php
   // Declare Variables
-  $server = "localhost";
-  $userName = "root";
-  $password = "";
-  $dbName = "expensemanager";
+  // $server = "localhost";
+  // $userName = "root";
+  // $password = "";
+  // $dbName = "expensemanager";
 
-  // starting Connection with Database
+  // // starting Connection with Database
 
-  $con = mysqli_connect($server, $userName, $password, $dbName);
+  // $con = mysqli_connect($server, $userName, $password, $dbName);
 
-  if (mysqli_connect_errno()) {
-    echo "Failed To connect with Database Server";
-    exit();
-  }
-  echo "Connected To database";
+  // if (mysqli_connect_errno()) {
+  //   echo "Failed To connect with Database Server";
+  //   exit();
+  // }
+  // echo "Connected To database";
 
   //SQL Query and Fetching Data from Table
   //queries
-  $queryforapproved = "SELECT * from approvedproposals";
-  $queryforrejected = "SELECT * from rejectedproposals";
-  $queryforpending = "SELECT * from pendingproposal"
+  // $queryforapproved = "SELECT * from proposals WHERE Status = 'Approved'";
+  // $queryforrejected = "SELECT * from rejectedproposals Status = 'Rejected'";
+  // $queryforpending = "SELECT * from pendingproposal Status = 'Peending'"
   //Creating Results Variables
-  $resultforapproved = mysqli_query($con, $query);
-  $resultforrejected = mysqli_query($con,$queryforrejected);
-  $resultforpending = mysqli_query($con,$queryforpending);
+  // $resultforapproved = mysqli_query($con, $queryforapproved);
+  // $resultforrejected = mysqli_query($con,$queryforrejected);
+  // $resultforpending = mysqli_query($con,$queryforpending);
 
 
   ?>
@@ -109,27 +129,36 @@
               </tr>
             </thead>
             <tbody class="table-group-divider">
-              <tr>
-                <th scope="row">1</th>
-                <td>Buy new chairs</td>
-                <td>Jhon</td>
-                <td>Rs. 5000</td>
-                <td>Hasan</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Buy new Tables</td>
-                <td>Laka</td>
-                <td>Rs. 15000</td>
-                <td>Haasini</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Buy new Laptop</td>
-                <td>Kumaar</td>
-                <td>Rs. 500000</td>
-                <td>Hasan</td>
-              </tr>
+              <?php
+              $queryap = "SELECT * from proposal WHERE Status =" . "'Approved';";
+              $resultap = mysqli_query($con, $queryap);
+              while ($row = mysqli_fetch_assoc($resultap)) {
+              ?>
+                <div>
+                  <td>
+                    <?php
+                    $provar = $row['ProID'];
+                    echo '<div><a href="proposal.php?proposal=' . $provar . '" style="text-decoration: none; color: black;">' . $row['ProID'] . '</a></div>';
+
+                    ?></td>
+                  <td><?php echo $row['Subject'] ?></td>
+                  <td>
+                    <?php
+                    $empvar = $row['EmpID'];
+                    echo '<div><a href="Profile.php?profile=' . $empvar . '" style="text-decoration: none; color: black;">' . $row['EmpID'] . '</a></div>';
+
+                    ?></td>
+                  <td><?php echo $row['Amount'] ?></td>
+                  <td> <?php
+                        $fivar = $row['FID'];
+                        echo '<div><a href="Profile.php?profile=' . $fivar . '" style="text-decoration: none; color: black;">' . $row['FID'] . '</a></div>';
+
+                        ?></td>
+
+                  </tr>
+                <?php
+              }
+                ?>
             </tbody>
           </table>
         </div>
@@ -161,26 +190,36 @@
             </thead>
             <tbody class="table-group-divider">
               <tr>
-                <th scope="row">3</th>
-                <td>Buy new server</td>
-                <td>Kamsan</td>
-                <td>Rs. 500000</td>
-                <td>Hasan</td>
+                <?php
+                $queryrp = "SELECT * from proposal WHERE Status =" . "'Rejected';";
+                $resultrp = mysqli_query($con, $queryrp);
+                while ($row = mysqli_fetch_assoc($resultrp)) {
+                ?>
+                  <div>
+                    <td>
+                      <?php
+                      $provar = $row['ProID'];
+                      echo '<div><a href="proposal.php?proposal=' . $provar . '" style="text-decoration: none; color: black;">' . $row['ProID'] . '</a></div>';
+
+                      ?></td>
+                    <td><?php echo $row['Subject'] ?></td>
+                    <td>
+                      <?php
+                      $empvar = $row['EmpID'];
+                      echo '<div><a href="Profile.php?profile=' . $empvar . '" style="text-decoration: none; color: black;">' . $row['EmpID'] . '</a></div>';
+
+                      ?></td>
+                    <td><?php echo $row['Amount'] ?></td>
+                    <td> <?php
+                          $fivar = $row['FID'];
+                          echo '<div><a href="Profile.php?profile=' . $fivar . '" style="text-decoration: none; color: black;">' . $row['FID'] . '</a></div>';
+
+                          ?></td>
+
               </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Buy new Land</td>
-                <td>Kishan</td>
-                <td>Rs. 10000000</td>
-                <td>Hasan</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Lease a Vheicle</td>
-                <td>jayathilaka</td>
-                <td>Rs. 50000</td>
-                <td>Thusari</td>
-              </tr>
+            <?php
+                }
+            ?>
             </tbody>
           </table>
         </div>
@@ -214,30 +253,39 @@
                   </tr>
                 </thead>
                 <tbody class="table-group-divider">
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Buy new chairs</td>
-                    <td>Jhon</td>
-                    <td>Rs. 5000</td>
-                    <td>Hasan</td>
-                    <td><a href="proposal.php" class="btn btn-primary">Review</a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Buy new Tables</td>
-                    <td>Laka</td>
-                    <td>Rs. 15000</td>
-                    <td>Haasini</td>
-                    <td><a href="proposal.php" class="btn btn-primary">Review</a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Buy new Laptop</td>
-                    <td>Kumaar</td>
-                    <td>Rs. 500000</td>
-                    <td>Hasan</td>
-                    <td><a href="proposal.php" class="btn btn-primary">Review</a></td>
-                  </tr>
+                <tr>
+              <?php
+              $querypp = "SELECT * from proposal WHERE Status =" . "'Pending';";
+              $resultpp = mysqli_query($con, $querypp);
+              while ($row = mysqli_fetch_assoc($resultpp)) {
+              ?>
+                <div>
+                  <td>
+                    <?php
+                    $provar = $row['ProID'];
+                    echo '<div><a href="proposal.php?proposal=' . $provar . '" style="text-decoration: none; color: black;">' . $row['ProID'] . '</a></div>';
+
+                    ?></td>
+                  <td><?php echo $row['Subject'] ?></td>
+                  <td>
+                    <?php
+                    $empvar = $row['EmpID'];
+                    echo '<div><a href="Profile.php?profile=' . $empvar . '" style="text-decoration: none; color: black;">' . $row['EmpID'] . '</a></div>';
+
+                    ?></td>
+                  <td><?php echo $row['Amount'] ?></td>
+                  <td> <?php
+                        $fivar = $row['FID'];
+                        echo '<div><a href="Profile.php?profile=' . $fivar . '" style="text-decoration: none; color: black;">' . $row['FID'] . '</a></div>';
+
+                        ?></td>
+                  <td><a href="<?php echo 'proposal.php?proposal=' . $provar ?>" class="btn btn-primary">Review</a></td>
+
+            </tr>
+          <?php
+              }
+          ?>
+
                 </tbody>
               </table>
             </div>
@@ -338,7 +386,12 @@
             <ul class="d-flex list-unstyled mt-auto">
               <li class="me-auto">
                 <span class="mt-3"><img src="https://cdn-icons-png.flaticon.com/512/5610/5610944.png" alt="Aproved Proposals" width="32" height="32" class="rounded-circle border border-white mt-3" />
-                  <p class="h6 mt-3">Count</p>
+                  <p class="h6 mt-3">
+                    <?php
+                    $queryApCard = "SELECT COUNT(column_name) FROM proposal WHERE Status ="."'Approved';" ;
+                    
+                    ?>
+                  </p>
                   <!-- <small class="mt-8">Count</small> -->
                 </span>
               </li>
@@ -428,17 +481,33 @@
             <!--Tables part Backend Start-->
             <tr>
               <?php
-              while ($row = mysqli_fetch_assoc($result)) {
+              $queryap = "SELECT * from proposal WHERE Status =" . "'Approved';";
+              $resultap = mysqli_query($con, $queryap);
+              while ($row = mysqli_fetch_assoc($resultap)) {
               ?>
-                <td><?php echo $row['ProID'] ?></td>
-                <td><?php echo $row['Subject'] ?></td>
-                <td><?php echo $row['EmpID'] ?></td>
-                <td><?php echo $row['Amount'] ?></td>
-                <td><?php echo $row['FID'] ?></td>
+                <div>
+                  <td>
+                    <?php
+                    $provar = $row['ProID'];
+                    echo '<div><a href="proposal.php?proposal=' . $provar . '" style="text-decoration: none; color: black;">' . $row['ProID'] . '</a></div>';
+
+                    ?></td>
+                  <td><?php echo $row['Subject'] ?></td>
+                  <td>
+                    <?php
+                    $empvar = $row['EmpID'];
+                    echo '<div><a href="Profile.php?profile=' . $empvar . '" style="text-decoration: none; color: black;">' . $row['EmpID'] . '</a></div>';
+
+                    ?></td>
+                  <td><?php echo $row['Amount'] ?></td>
+                  <td> <?php
+                        $fivar = $row['FID'];
+                        echo '<div><a href="Profile.php?profile=' . $fivar . '" style="text-decoration: none; color: black;">' . $row['FID'] . '</a></div>';
+
+                        ?></td>
 
             </tr>
           <?php
-
               }
           ?>
           </tbody>
@@ -460,26 +529,36 @@
           </thead>
           <tbody class="table-group-divider">
             <tr>
-              <th scope="row">3</th>
-              <td>Buy new server</td>
-              <td>Kamsan</td>
-              <td>Rs. 500000</td>
-              <td>Hasan</td>
+              <?php
+              $queryrp = "SELECT * from proposal WHERE Status =" . "'Rejected';";
+              $resultrp = mysqli_query($con, $queryrp);
+              while ($row = mysqli_fetch_assoc($resultrp)) {
+              ?>
+                <div>
+                  <td>
+                    <?php
+                    $provar = $row['ProID'];
+                    echo '<div><a href="proposal.php?proposal=' . $provar . '" style="text-decoration: none; color: black;">' . $row['ProID'] . '</a></div>';
+
+                    ?></td>
+                  <td><?php echo $row['Subject'] ?></td>
+                  <td>
+                    <?php
+                    $empvar = $row['EmpID'];
+                    echo '<div><a href="Profile.php?profile=' . $empvar . '" style="text-decoration: none; color: black;">' . $row['EmpID'] . '</a></div>';
+
+                    ?></td>
+                  <td><?php echo $row['Amount'] ?></td>
+                  <td> <?php
+                        $fivar = $row['FID'];
+                        echo '<div><a href="Profile.php?profile=' . $fivar . '" style="text-decoration: none; color: black;">' . $row['FID'] . '</a></div>';
+
+                        ?></td>
+
             </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Buy new Land</td>
-              <td>Kishan</td>
-              <td>Rs. 10000000</td>
-              <td>Hasan</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Lease a Vheicle</td>
-              <td>jayathilaka</td>
-              <td>Rs. 50000</td>
-              <td>Thusari</td>
-            </tr>
+          <?php
+              }
+          ?>
           </tbody>
         </table>
       </div>
@@ -495,7 +574,7 @@
         <table class="table tableBody">
           <thead>
             <tr>
-              <th scope="col">No</th>
+              <th scope="col">Proposal ID</th>
               <th scope="col">Prposal Subject</th>
               <th scope="col">Submitte by</th>
               <th scope="col">Amount</th>
@@ -505,29 +584,38 @@
           </thead>
           <tbody class="table-group-divider">
             <tr>
-              <th scope="row">1</th>
-              <td>Buy new chairs</td>
-              <td>Jhon</td>
-              <td>Rs. 5000</td>
-              <td>Hasan</td>
-              <td><a href="proposal.php" class="btn btn-primary">Review</a></td>
+              <?php
+              $querypp = "SELECT * from proposal WHERE Status =" . "'Pending';";
+              $resultpp = mysqli_query($con, $querypp);
+              while ($row = mysqli_fetch_assoc($resultpp)) {
+              ?>
+                <div>
+                  <td>
+                    <?php
+                    $provar = $row['ProID'];
+                    echo '<div><a href="proposal.php?proposal=' . $provar . '" style="text-decoration: none; color: black;">' . $row['ProID'] . '</a></div>';
+
+                    ?></td>
+                  <td><?php echo $row['Subject'] ?></td>
+                  <td>
+                    <?php
+                    $empvar = $row['EmpID'];
+                    echo '<div><a href="Profile.php?profile=' . $empvar . '" style="text-decoration: none; color: black;">' . $row['EmpID'] . '</a></div>';
+
+                    ?></td>
+                  <td><?php echo $row['Amount'] ?></td>
+                  <td> <?php
+                        $fivar = $row['FID'];
+                        echo '<div><a href="Profile.php?profile=' . $fivar . '" style="text-decoration: none; color: black;">' . $row['FID'] . '</a></div>';
+
+                        ?></td>
+                  <td><a href="<?php echo 'proposal.php?proposal=' . $provar ?>" class="btn btn-primary">Review</a></td>
+
             </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Buy new Tables</td>
-              <td>Laka</td>
-              <td>Rs. 15000</td>
-              <td>Haasini</td>
-              <td><a href="proposal.php" class="btn btn-primary">Review</a></td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Buy new Laptop</td>
-              <td>Kumaar</td>
-              <td>Rs. 500000</td>
-              <td>Hasan</td>
-              <td><a href="proposal.php" class="btn btn-primary">Review</a></td>
-            </tr>
+          <?php
+              }
+          ?>
+
           </tbody>
         </table>
       </div>
