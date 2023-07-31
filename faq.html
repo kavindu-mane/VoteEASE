@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>FAQ</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="faq.css">
+</head>
+<body>
+    <!-- menu settings script -->
+<script src="./js/nav-menu.js"></script>
+
+<header class="bg-purple-500 py-4 px-8 flex justify-center">
+  <div class="container mx-0 md:mx-auto flex justify-between items-center">
+    <h1 class="text-3xl font-bold text-white">VoteEASE</h1>
+    <nav class="flex items-center">
+      <button onclick="menuSettings(event)" id="menu-btn" class="z-50">
+        <span class="material-symbols-outlined text-white md:hidden">
+          menu
+        </span>
+      </button>
+
+      <!-- header link area -->
+      <div
+        id="menu"
+        class="fixed -right-80 top-0 z-40 flex h-screen flex-col bg-slate-700 pe-4 ps-3 pt-10 duration-300 shadow-2xl shadow-purple-500/50 hover:shadow-emerald-500/50 md:relative md:right-0 md:h-auto md:flex-row md:bg-transparent md:pt-0"
+      >
+        <a
+          href="#"
+          class="mx-4 my-3 w-60 font-semibold text-white hover:text-green-300 md:my-0 md:w-auto"
+          >About</a
+        >
+
+        <a
+          href="#"
+          class="mx-4 my-3 w-60 font-semibold text-white hover:text-green-300 md:my-0 md:w-auto"
+          >Voting Process</a
+        >
+
+        <a
+          href="#"
+          class="mx-4 my-3 w-60 font-semibold text-white hover:text-green-300 md:my-0 md:w-auto"
+          >Pricing</a
+        >
+
+        <a
+          href="#"
+          class="mx-4 my-3 w-60 font-semibold text-white hover:text-green-300 md:my-0 md:w-auto"
+          >Contact</a
+        >
+
+        <a
+          href="#"
+          class="mx-4 my-3 w-60 font-semibold text-white hover:text-green-300 md:my-0 md:w-auto"
+          >FAQ</a
+        >
+      </div>
+    </nav>
+  </div>
+</header>
+
+    
+  <div class="container mx-auto bg-gray-200 py-8">
+    <div class="max-w-md mx-auto bg-purple-300 shadow-md rounded-lg">
+      <div class="p-6">
+        <h1 class="text-2xl font-bold mb-6">FAQs</h1>
+        <div class="space-y-4">
+          <div class="border-b pb-4">
+            <h3 class="flex items-center">
+              What is voteEase?
+              <span class="ml-auto text-gray-500 cursor-pointer toggle-icon">&#43;</span>
+            </h3>
+            <div class="faq-body hidden">
+              VoteEase is an online voting system designed to facilitate secure and convenient voting processes for various types of elections and polls. It allows users to cast their votes from anywhere with an internet connection.
+            </div>
+          </div>
+          <div class="border-b pb-4">
+            <h3 class="flex items-center">
+              How can I contact customer support?
+              <span class="ml-auto text-gray-500 cursor-pointer toggle-icon">&#43;</span>
+            </h3>
+            <div class="faq-body hidden">
+              Please visit our Contact Us page or call our support hotline for assistance.
+            </div>
+          </div>
+          <div class="border-b pb-4">
+            <h3 class="flex items-center">
+              Is VoteEase secure?
+              <span class="ml-auto text-gray-500 cursor-pointer toggle-icon">&#43;</span>
+            </h3>
+            <div class="faq-body hidden">
+              Yes,VoteEase employs robust security measures to ensure the integrity and confidentiality of the voting process. It utilizes encryption and other security protocols to safeguard user data and prevent unauthorized access.
+            </div>
+          </div>
+          <div class="border-b pb-4">
+            <h3 class="flex items-center">
+              Who can use VoteEase?
+              <span class="ml-auto text-gray-500 cursor-pointer toggle-icon">&#43;</span>
+            </h3>
+            <div class="faq-body hidden">
+              VoteEase is designed for organizations, institutions, and businesses that need a reliable and efficient voting system for conducting elections or gathering opinions from their members or stakeholders.
+            </div>
+          </div>
+            <div class="border-b pb-4">
+            <h3 class="flex items-center">
+              How do voters participate in the voting process?
+              <span class="ml-auto text-gray-500 cursor-pointer toggle-icon">&#43;</span>
+            </h3>
+            <div class="faq-body hidden">
+              Voters can participate in the voting process by accessing the VoteEase platform through their web browsers or dedicated mobile applications. They need to log in with their credentials and cast their votes securely.
+            </div>
+          </div>
+            <div class="border-b pb-4">
+            <h3 class="flex items-center">
+              How do I register to use VoteEase?
+              <span class="ml-auto text-gray-500 cursor-pointer toggle-icon">&#43;</span>
+            </h3>
+            <div class="faq-body hidden">
+              VoteEase provides a simple registration process. Users can sign up using their email address and create a secure password to access their accounts.
+            </div>
+          </div>
+            <div class="border-b pb-4">
+            <h3 class="flex items-center">
+             Is VoteEase compliant with data protection regulations?
+              <span class="ml-auto text-gray-500 cursor-pointer toggle-icon">&#43;</span>
+            </h3>
+            <div class="faq-body hidden">
+              Yes, VoteEase complies with relevant data protection regulations and prioritizes the privacy and security of user data.
+            </div>
+          </div>
+            <div class="border-b pb-4">
+            <h3 class="flex items-center">
+              What customer support options are available?
+              <span class="ml-auto text-gray-500 cursor-pointer toggle-icon">&#43;</span>
+            </h3>
+            <div class="faq-body hidden">
+              VoteEase offers customer support channels, such as email and online chat, to assist users with any issues or queries they may have.
+            </div>
+          </div>
+          <div class="border-b pb-4">
+            <h3 class="flex items-center">
+              How are voting results calculated and displayed?
+              <span class="ml-auto text-gray-500 cursor-pointer toggle-icon">&#43;</span>
+            </h3>
+            <div class="faq-body hidden">
+              VoteEase tallies the votes in real-time and presents the results through clear and informative charts or graphs. The results can be accessed securely by authorized individuals.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script type="text/javascript" src="faq.js"></script>
+  <script>
+    // Toggle FAQ answer visibility
+    $(document).ready(function() {
+      $('.toggle-icon').click(function() {
+        $(this).toggleClass('text-gray-500 text-blue-500');
+        $(this).closest('h3').next('.faq-body').slideToggle();
+      });
+    });
+  </script>
+  <footer class="bg-purple-700 py-4 px-8 text-center mt-20">
+  <p class="text-sm text-white">
+    &copy; 2023 VoteEASE. All rights reserved. |
+    <a href="#" class="text-white hover:text-green-200">Privacy Policy</a> |
+    <a href="#" class="text-white hover:text-green-200">Terms of Service</a>
+  </p>
+</footer>
+   
+</body>
+</html>
