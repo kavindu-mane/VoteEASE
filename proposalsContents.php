@@ -253,38 +253,38 @@ $con = mysqli_connect($server, $userName, $password, $dbName);
                   </tr>
                 </thead>
                 <tbody class="table-group-divider">
-                <tr>
-              <?php
-              $querypp = "SELECT * from proposal WHERE Status =" . "'Pending';";
-              $resultpp = mysqli_query($con, $querypp);
-              while ($row = mysqli_fetch_assoc($resultpp)) {
-              ?>
-                <div>
-                  <td>
+                  <tr>
                     <?php
-                    $provar = $row['ProID'];
-                    echo '<div><a href="proposal.php?proposal=' . $provar . '" style="text-decoration: none; color: black;">' . $row['ProID'] . '</a></div>';
+                    $querypp = "SELECT * from proposal WHERE Status =" . "'Pending';";
+                    $resultpp = mysqli_query($con, $querypp);
+                    while ($row = mysqli_fetch_assoc($resultpp)) {
+                    ?>
+                      <div>
+                        <td>
+                          <?php
+                          $provar = $row['ProID'];
+                          echo '<div><a href="proposal.php?proposal=' . $provar . '" style="text-decoration: none; color: black;">' . $row['ProID'] . '</a></div>';
 
-                    ?></td>
-                  <td><?php echo $row['Subject'] ?></td>
-                  <td>
-                    <?php
-                    $empvar = $row['EmpID'];
-                    echo '<div><a href="Profile.php?profile=' . $empvar . '" style="text-decoration: none; color: black;">' . $row['EmpID'] . '</a></div>';
+                          ?></td>
+                        <td><?php echo $row['Subject'] ?></td>
+                        <td>
+                          <?php
+                          $empvar = $row['EmpID'];
+                          echo '<div><a href="Profile.php?profile=' . $empvar . '" style="text-decoration: none; color: black;">' . $row['EmpID'] . '</a></div>';
 
-                    ?></td>
-                  <td><?php echo $row['Amount'] ?></td>
-                  <td> <?php
-                        $fivar = $row['FID'];
-                        echo '<div><a href="Profile.php?profile=' . $fivar . '" style="text-decoration: none; color: black;">' . $row['FID'] . '</a></div>';
+                          ?></td>
+                        <td><?php echo $row['Amount'] ?></td>
+                        <td> <?php
+                              $fivar = $row['FID'];
+                              echo '<div><a href="Profile.php?profile=' . $fivar . '" style="text-decoration: none; color: black;">' . $row['FID'] . '</a></div>';
 
-                        ?></td>
-                  <td><a href="<?php echo 'proposal.php?proposal=' . $provar ?>" class="btn btn-primary">Review</a></td>
+                              ?></td>
+                        <td><a href="<?php echo 'proposal.php?proposal=' . $provar ?>" class="btn btn-primary">Review</a></td>
 
-            </tr>
-          <?php
-              }
-          ?>
+                  </tr>
+                <?php
+                    }
+                ?>
 
                 </tbody>
               </table>
@@ -388,8 +388,10 @@ $con = mysqli_connect($server, $userName, $password, $dbName);
                 <span class="mt-3"><img src="https://cdn-icons-png.flaticon.com/512/5610/5610944.png" alt="Aproved Proposals" width="32" height="32" class="rounded-circle border border-white mt-3" />
                   <p class="h6 mt-3">
                     <?php
-                    $queryApCard = "SELECT COUNT(column_name) FROM proposal WHERE Status ="."'Approved';" ;
-                    
+                    $queryApCard = "SELECT * FROM proposal WHERE Status =" . "'Approved';";
+                    $queryApCardrun = mysqli_query($con, $queryApCard);
+                    $TotalAp = mysqli_num_rows($queryApCardrun);
+                    echo $TotalAp;
                     ?>
                   </p>
                   <!-- <small class="mt-8">Count</small> -->
@@ -417,7 +419,14 @@ $con = mysqli_connect($server, $userName, $password, $dbName);
               <li class="me-auto">
                 <span>
                   <img src="https://static.vecteezy.com/system/resources/previews/017/178/032/original/round-cross-mark-symbol-with-transparent-background-free-png.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white" />
-                  <p class="h6 mt-3">Count</p>
+                  <p class="h6 mt-3">
+                    <?php
+                    $queryRpCard = "SELECT * FROM proposal WHERE Status =" . "'Rejected';";
+                    $queryRpCardrun = mysqli_query($con, $queryRpCard);
+                    $TotalRp = mysqli_num_rows($queryRpCardrun);
+                    echo $TotalRp;
+                    ?>
+                  </p>
                 </span>
               </li>
 
@@ -441,8 +450,15 @@ $con = mysqli_connect($server, $userName, $password, $dbName);
             <ul class="d-flex list-unstyled mt-auto">
               <li class="me-auto">
                 <span>
-                  <img src="https://img.uxwing.com/wp-content/themes/uxwing/download/signs-symbols/caution-icon.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white" />
-                  <p class="h6 mt-3" style="color: black">Count</p>
+                  <img src="https://static.vecteezy.com/system/resources/previews/004/607/677/original/caution-danger-sign-free-vector.jpg" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white" />
+                  <p class="h6 mt-3" style="color: black">
+                    <?php
+                    $queryPpCard = "SELECT * FROM proposal WHERE Status =" . "'Pending';";
+                    $queryPpCardrun = mysqli_query($con, $queryPpCard);
+                    $TotalPp = mysqli_num_rows($queryPpCardrun);
+                    echo $TotalPp;
+                    ?>
+                  </p>
                 </span>
               </li>
 
