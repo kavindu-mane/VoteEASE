@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Voter Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome, [Voter Name]!</h1>
+        <p>Voter ID: [Voter ID]</p>
+        <p>Account ID: [Account ID]</p>
+
+        <!-- Voting Options -->
+        <h2>Available Voting Campaigns</h2>
+        <ul id="voting-campaigns">
+            <li>
+                <span>[Campaign 1 Name]</span>
+                <button onclick="voteForCampaign(1)">Vote</button>
+            </li>
+            <li>
+                <span>[Campaign 2 Name]</span>
+                <button onclick="voteForCampaign(2)">Vote</button>
+            </li>
+            <!-- Add more campaigns here -->
+        </ul>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
