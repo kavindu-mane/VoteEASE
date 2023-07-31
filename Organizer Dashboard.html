@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Organizer Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="C:\Users\Chamara\Documents\NetBeansProjectsc\VoteEASE\css\stylesc.css">
 </head>
 <body>
     <div class="container">
@@ -13,13 +13,37 @@
         <!-- Organizer Actions -->
         <h2>Organizer Actions</h2>
         <ul id="organizer-actions">
-            <li><button onclick="createVotingCampaign()">Create Voting Campaign</button></li>
-            <li><button onclick="manageCampaigns()">Manage Campaigns</button></li>
-            <li><button onclick="viewReports()">View Reports</button></li>
+            <li><button>Create Voting Campaign</button></li>
+            <li><button>Manage Campaigns</button></li>
+            <li><button>View Reports</button></li>
             <!-- Add more organizer actions here -->
         </ul>
+
+        <!-- Voting Campaign Cards -->
+        <h2>Voting Campaigns</h2>
+        <div class="campaign-card scheduled">
+            <h3>Campaign 1</h3>
+            <p>Start: August 1, 2023</p>
+            <p>End: August 10, 2023</p>
+            <p>Status: Scheduled</p>
+            <p>Link: https://campaign 1</p>
+            <button >View Votes</button>
+            
+        </div>
+
+        <div class="campaign-card ongoing">
+            <h3>Campaign 2</h3>
+            <p>Start: August 15, 2023</p>
+            <p>End: August 20, 2023</p>
+            <p>Status: Ongoing
+            <p>Link: https://campaign 2</p>
+            <button >View Votes</button>
+            
+        </div>
+        
+        
+        <!-- Add more voting campaign cards here -->
     </div>
 
-    <script src="script.js"></script>
 </body>
 </html>
