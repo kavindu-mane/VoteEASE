@@ -4,6 +4,6 @@
 
 @layer base {
   body {
-    @apply min-h-screen flex flex-col justify-between overflow-x-hidden bg-gray-900 text-white;
+    @apply min-h-screen flex flex-col justify-between overflow-x-hidden bg-slate-100 text-slate-800;
   }
 }
