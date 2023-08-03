@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VoteEASE</title>
+    <!-- google icons -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!-- tailwind css file -->
+    <link href="/css/output.css" rel="stylesheet" />
+    <!-- jquery -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.js"
+      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <!-- header -->
+    <div id="header"></div>
+
+    <!-- add your code this area only: start -->
+    <div
+      class="w-full justify-center items-center p-0 outline-none font-sans text-base text-gray-600 max-w-4xl py-3 m-auto rounded-md border border-slate-500 shadow bg-purple-200"
+    >
+      <h1
+        class="px-0 m-0 outline-none font-sans text-gray-600 py-3 text-3xl text-center font-bold"
+      >
+        Registration
+      </h1>
+      <form
+        action=""
+        class="p-0 my-0 mx-8 outline-none font-sans text-base text-gray-600 text-center justify-center items-center"
+      >
+        <!-- account type -->
+        <hr class="border border-gray-400 opacity-30 mx-10 my-4" />
+        <div class="flex flex-wrap gap-4 justify-center">
+          <label class="cursor-pointer">
+            <input type="radio" class="peer sr-only" name="account" checked />
+            <div
+              class="w-40 max-w-xl rounded-md bg-purple-50 p-5 text-gray-600 ring-2 ring-transparent transition-all hover:shadow peer-checked:text-purple-600 peer-checked:ring-purple-400 peer-checked:ring-offset-2"
+            >
+              <div class="flex items-center gap-2 justify-center h-6">
+                <span class="material-icons"> check_circle </span>
+                <p class="text-sm font-semibold uppercase text-gray-500">
+                  Voter
+                </p>
+              </div>
+            </div>
+          </label>
+          <label class="cursor-pointer">
+            <input type="radio" class="peer sr-only" name="account" />
+            <div
+              class="w-40 max-w-xl rounded-md bg-purple-50 p-5 text-gray-600 ring-2 ring-transparent transition-all hover:shadow peer-checked:text-purple-600 peer-checked:ring-purple-400 peer-checked:ring-offset-2"
+            >
+              <div class="flex items-center gap-1 text-center">
+                <span class="material-icons"> check_circle </span>
+                <p class="text-sm font-semibold uppercase text-gray-500">
+                  Campaigner
+                </p>
+              </div>
+            </div>
+          </label>
+        </div>
+
+        <!-- basic info-->
+        <hr class="border border-gray-400 opacity-30 mx-10 my-4" />
+        <div class="flex w-full max-w-md mx-auto mb-4">
+          <label
+            id="icon"
+            for="name"
+            class="shadow-md py-3 px-4 bg-purple-500 text-purple-50 text-center rounded-s-md"
+          >
+            <span class="material-icons"> person </span>
+          </label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Name"
+            class="p-3 outline-none font-sans text-base text-gray-600 border border-purple-400 shadow-md bg-purple-50 w-full rounded-e-md"
+            required
+          />
+        </div>
+
+        <div class="flex w-full max-w-md mx-auto mb-4">
+          <label
+            id="icon"
+            for="email"
+            class="shadow-md py-3 px-4 bg-purple-500 text-purple-50 text-center rounded-s-md"
+          >
+            <span class="material-icons"> email </span>
+          </label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Email"
+            class="p-3 outline-none font-sans text-base text-gray-600 border border-purple-400 shadow-md bg-purple-50 w-full rounded-e-md"
+            required
+          />
+        </div>
+
+        <div class="flex w-full max-w-md mx-auto mb-4">
+          <label
+            id="icon"
+            for="password"
+            class="shadow-md py-3 px-4 bg-purple-500 text-purple-50 text-center rounded-s-md"
+          >
+            <span class="material-icons"> lock </span>
+          </label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Password"
+            class="p-3 outline-none font-sans text-base text-gray-600 border border-purple-400 shadow-md bg-purple-50 w-full rounded-e-md"
+            required
+          />
+        </div>
+
+        <div class="flex w-full max-w-md mx-auto mb-4">
+          <label
+            id="icon"
+            for="cpassword"
+            class="shadow-md py-3 px-4 bg-purple-500 text-purple-50 text-center rounded-s-md"
+          >
+            <span class="material-icons"> lock </span>
+          </label>
+          <input
+            type="password"
+            name="cpassword"
+            id="cpassword"
+            placeholder="Comform Password"
+            class="p-3 outline-none font-sans text-base text-gray-600 border border-purple-400 shadow-md bg-purple-50 w-full rounded-e-md"
+            required
+          />
+        </div>
+
+        <!-- packages -->
+        <hr class="border border-gray-400 opacity-30 mx-10 my-4" />
+        <div class="flex flex-wrap gap-3 justify-center">
+          <label class="cursor-pointer">
+            <input type="radio" class="peer sr-only" name="pricing" checked />
+            <div
+              class="w-64 max-w-xl rounded-md bg-purple-50 p-5 text-gray-600 ring-2 ring-transparent transition-all hover:shadow peer-checked:text-purple-600 peer-checked:ring-purple-400 peer-checked:ring-offset-2"
+            >
+              <div class="flex flex-col gap-1">
+                <div class="flex items-center justify-between">
+                  <p class="text-sm font-semibold uppercase text-gray-500">
+                    Basic
+                  </p>
+                  <span class="material-icons"> check_circle </span>
+                </div>
+                <div class="flex items-end justify-between">
+                  <p><span class="text-lg font-bold">One</span> Campaign</p>
+                  <p class="text-sm font-bold">free</p>
+                </div>
+              </div>
+            </div>
+          </label>
+          <label class="cursor-pointer">
+            <input type="radio" class="peer sr-only" name="pricing" />
+            <div
+              class="w-64 max-w-xl rounded-md bg-purple-50 p-5 text-gray-600 ring-2 ring-transparent transition-all hover:shadow peer-checked:text-purple-600 peer-checked:ring-purple-400 peer-checked:ring-offset-2"
+            >
+              <div class="flex flex-col gap-1">
+                <div class="flex items-center justify-between">
+                  <p class="text-sm font-semibold uppercase text-gray-500">
+                    Business
+                  </p>
+                  <span class="material-icons"> check_circle </span>
+                </div>
+                <div class="flex items-end justify-between">
+                  <p><span class="text-lg font-bold">12</span> Campaigns</p>
+                  <p class="text-sm font-bold">Rs.5,500 / yr</p>
+                </div>
+              </div>
+            </div>
+          </label>
+          <label class="cursor-pointer">
+            <input type="radio" class="peer sr-only" name="pricing" />
+            <div
+              class="w-64 max-w-xl rounded-md bg-purple-50 p-5 text-gray-600 ring-2 ring-transparent transition-all hover:shadow peer-checked:text-purple-600 peer-checked:ring-purple-400 peer-checked:ring-offset-2"
+            >
+              <div class="flex flex-col gap-1">
+                <div class="flex items-center justify-between">
+                  <p class="text-sm font-semibold uppercase text-gray-500">
+                    premium
+                  </p>
+                  <span class="material-icons"> check_circle </span>
+                </div>
+                <div class="flex items-end justify-between">
+                  <p><span class="text-lg font-bold">Unlimited</span></p>
+                  <p class="text-sm font-bold">Rs.8,000 / yr</p>
+                </div>
+              </div>
+            </div>
+          </label>
+        </div>
+
+        <hr class="border border-gray-400 opacity-30 mx-10 my-4" />
+
+        <div
+          class="p-0 m-0 outline-none font-sans text-base text-gray-600 mt-3 text-center"
+        >
+          <p class="p-0 m-0 outline-none font-sans text-sm text-gray-600">
+            By clicking Register, you agree on our
+            <a href="terms.html">Terms & Privacy Policy for VoteEASE</a>.
+          </p>
+          <!-- submit button -->
+          <button
+            type="submit"
+            href=""
+            class="py-3 px-0 mt-16 min-w-[20rem] w-1/2 my-3 mx-auto rounded-md border-0 bg-purple-500 text-lg font-semibold text-purple-50"
+          >
+            Resister
+          </button>
+        </div>
+      </form>
+    </div>
+    <!-- add your code this area only: end-->
+
+    <!-- footer -->
+    <div id="footer"></div>
+
+    <!-- header and footer js -->
+    <script>
+      $(() => {
+        $("#header").load("./components/header.html");
+        $("#footer").load("./components/footer.html");
+      });
+    </script>
+  </body>
+</html>
