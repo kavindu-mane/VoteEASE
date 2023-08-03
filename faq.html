@@ -1,230 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAQ - VoteEASE</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FAQ - VoteEASE</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-  <!-- tailwind css file -->
-  <link href="/dist/output.css" rel="stylesheet" />
-  <!-- jquery -->
-  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-    crossorigin="anonymous"></script>
-  </style>
-  <style>
-    body {
-      min-height: 100vh;
-    }
-    .bg-glass{
-      background: hsla(0, 0%, 100%, 0.6);
-      backdrop-filter: blur(60px);
-    }
-    .btn-submit{
-      background-color: #e358ff;
-    }
-    .btn-submit:hover{
-      background-color: #5a0f69;
-    }
-  </style>
-</head>
+    <!-- google icons -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+    <!-- tailwind css file -->
+    <link href="/css/output.css" rel="stylesheet" />
+    <!-- jquery -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.js"
+      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-<body class="text-black bg-slate-900">
-  <!-- header -->
-  <div id="header"></div>
-  <!-- Frequently Asked Questions (FAQ) Section -->
-  <div class="absolute right-0 ">
-    <img src="img/undraw_voting_nvu7.svg" alt="" srcset="">
-  </div>
-  <main>
-    <!-- Container for demo purpose -->
-    <div class="container p-6 mx-auto my-24 rounded-3xl bg-glass">
-      <!-- Section: Design Block -->
-      <section class="mb-32 text-gray-800">
-        <div class="grid gap-4 lg:grid-cols-2 lg:gap-x-12 lg:mb-0">
-          <div class="mb-12 lg:mb-0">
-            <h2 class="mb-6 text-3xl font-bold">Frequently asked questions</h2>
+  <body>
+    <!-- header -->
+    <div id="header"></div>
 
-            <p class="mb-12 text-gray-950">
-              Didn't find your answer in the FAQ? Contact our support team.
-            </p>
-            <div class="p-10 border-2 border-solid border-sky-500">
-              <form>
-                <div class="mb-6 form-group">
-                  <input type="text"
-                    class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                    id="exampleInput7" placeholder="Name" />
+    <!-- Section: Design Block -->
+    <section class="w-screen flex justify-center my-20">
+      <section class="mx-5 text-center lg:text-left max-w-7xl w-full">
+        <div class="grid items-center lg:grid-cols-2 gap-10">
+          <!-- left side -->
+          <div class="hidden lg:flex lg:justify-center">
+            <img
+              src="img/faq.svg"
+              class="w-2/3 h-2/3"
+              alt="about image"
+            />
+          </div>
+          <!-- right side -->
+          <div class="flex flex-col">
+            <h1
+              class="mb-6 text-2xl md:text-3xl lg:text-4xl font-bold col-span-2"
+            >
+              FAQs
+            </h1>
+            <div class="space-y-4 w-full text-left">
+              <div
+                class="pb-4 min-w-full bg-white drop-shadow-md shadow-md rounded-md"
+              >
+                <h3
+                  class="flex items-center toggle-icon min-w-full cursor-pointer p-3"
+                >
+                  What is VoteEase?
+                  <span class="ml-auto ps-10 text-gray-500 text-3xl"
+                    >&#43;</span
+                  >
+                </h3>
+                <div class="hidden faq-body text-left ps-10">
+                  VoteEase is an online voting system designed to facilitate
+                  secure and convenient voting processes for various types of
+                  elections and polls. It allows users to cast their votes from
+                  anywhere with an internet connection.
                 </div>
-                <div class="mb-6 form-group">
-                  <input type="email"
-                    class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                    id="exampleInput8" placeholder="Email address" />
+              </div>
+              <div
+                class="pb-4 min-w-full bg-white drop-shadow-md shadow-md rounded-md"
+              >
+                <h3
+                  class="flex items-center toggle-icon min-w-full cursor-pointer p-3"
+                >
+                  How can I contact customer support?
+                  <span class="ml-auto ps-10 text-gray-500 text-3xl"
+                    >&#43;</span
+                  >
+                </h3>
+                <div class="hidden faq-body text-left ps-10">
+                  Please visit our Contact Us page or call our support hotline
+                  for assistance.
                 </div>
-                <div class="mb-6 form-group">
-                  <textarea
-                    class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                    id="exampleFormControlTextarea13" rows="3" placeholder="Message"></textarea>
+              </div>
+              <div
+                class="pb-4 min-w-full bg-white drop-shadow-md shadow-md rounded-md"
+              >
+                <h3
+                  class="flex items-center toggle-icon min-w-full cursor-pointer p-3"
+                >
+                  Is VoteEase secure?
+                  <span class="ml-auto ps-10 text-gray-500 text-3xl"
+                    >&#43;</span
+                  >
+                </h3>
+                <div class="hidden faq-body text-left ps-10">
+                  Yes,VoteEase employs robust security measures to ensure the
+                  integrity and confidentiality of the voting process. It
+                  utilizes encryption and other security protocols to safeguard
+                  user data and prevent unauthorized access.
                 </div>
-                <button type="submit"
-                  class="w-full px-6 py-2.5 bg-blue-950 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out btn-submit">
-                  Send
-                </button>
-              </form>
-            </div>
-          </div> 
-
-          <div class="mb-6 ">
-            <div class="p-6">
-              <h1 class="mb-6 text-2xl font-bold">FAQs</h1>
-              <div class="space-y-4">
-                <div class="pb-4 border-b">
-                  <h3 class="flex items-center">
-                    What is voteEase?
-                    <span class="ml-auto text-gray-500 cursor-pointer toggle-icon">&#43;</span>
-                  </h3>
-                  <div class="hidden faq-body">
-                    VoteEase is an online voting system designed to facilitate secure and convenient voting processes
-                    for
-                    various types of elections and polls. It allows users to cast their votes from anywhere with an
-                    internet
-                    connection.
-                  </div>
+              </div>
+              <div
+                class="pb-4 min-w-full bg-white drop-shadow-md shadow-md rounded-md"
+              >
+                <h3
+                  class="flex items-center toggle-icon min-w-full cursor-pointer p-3"
+                >
+                  Who can use VoteEase?
+                  <span class="ml-auto ps-10 text-gray-500 text-3xl"
+                    >&#43;</span
+                  >
+                </h3>
+                <div class="hidden faq-body text-left ps-10">
+                  VoteEase is designed for organizations, institutions, and
+                  businesses that need a reliable and efficient voting system
+                  for conducting elections or gathering opinions from their
+                  members or stakeholders.
                 </div>
-                <div class="pb-4 border-b">
-                  <h3 class="flex items-center">
-                    How can I contact customer support?
-                    <span class="ml-auto text-gray-500 cursor-pointer toggle-icon">&#43;</span>
-                  </h3>
-                  <div class="hidden faq-body">
-                    Please visit our Contact Us page or call our support hotline for assistance.
-                  </div>
+              </div>
+              <div
+                class="pb-4 min-w-full bg-white drop-shadow-md shadow-md rounded-md"
+              >
+                <h3
+                  class="flex items-center toggle-icon min-w-full cursor-pointer p-3"
+                >
+                  How do voters participate in the voting process?
+                  <span class="ml-auto ps-10 text-gray-500 text-3xl"
+                    >&#43;</span
+                  >
+                </h3>
+                <div class="hidden faq-body text-left ps-10">
+                  Voters can participate in the voting process by accessing the
+                  VoteEase platform through their web browsers or dedicated
+                  mobile applications. They need to log in with their
+                  credentials and cast their votes securely.
                 </div>
-                <div class="pb-4 border-b">
-                  <h3 class="flex items-center">
-                    Is VoteEase secure?
-                    <span class="ml-auto text-gray-500 cursor-pointer toggle-icon">&#43;</span>
-                  </h3>
-                  <div class="hidden faq-body">
-                    Yes,VoteEase employs robust security measures to ensure the integrity and confidentiality of the
-                    voting
-                    process. It utilizes encryption and other security protocols to safeguard user data and prevent
-                    unauthorized access.
-                  </div>
+              </div>
+              <div
+                class="pb-4 min-w-full bg-white drop-shadow-md shadow-md rounded-md"
+              >
+                <h3
+                  class="flex items-center toggle-icon min-w-full cursor-pointer p-3"
+                >
+                  How do I register to use VoteEase?
+                  <span class="ml-auto ps-10 text-gray-500 text-3xl"
+                    >&#43;</span
+                  >
+                </h3>
+                <div class="hidden faq-body text-left ps-10">
+                  VoteEase provides a simple registration process. Users can
+                  sign up using their email address and create a secure password
+                  to access their accounts.
                 </div>
-                <div class="pb-4 border-b">
-                  <h3 class="flex items-center">
-                    Who can use VoteEase?
-                    <span class="ml-auto text-gray-500 cursor-pointer toggle-icon">&#43;</span>
-                  </h3>
-                  <div class="hidden faq-body">
-                    VoteEase is designed for organizations, institutions, and businesses that need a reliable and
-                    efficient
-                    voting system for conducting elections or gathering opinions from their members or stakeholders.
-                  </div>
+              </div>
+              <div
+                class="pb-4 min-w-full bg-white drop-shadow-md shadow-md rounded-md"
+              >
+                <h3
+                  class="flex items-center toggle-icon min-w-full cursor-pointer p-3"
+                >
+                  Is VoteEase compliant with data protection regulations ?
+                  <span class="ml-auto ps-10 text-gray-500 text-3xl"
+                    >&#43;</span
+                  >
+                </h3>
+                <div class="hidden faq-body text-left ps-10">
+                  Yes, VoteEase complies with relevant data protection
+                  regulations and prioritizes the privacy and security of user
+                  data.
                 </div>
-                <div class="pb-4 border-b">
-                  <h3 class="flex items-center">
-                    How do voters participate in the voting process?
-                    <span class="ml-auto text-gray-500 cursor-pointer toggle-icon">&#43;</span>
-                  </h3>
-                  <div class="hidden faq-body">
-                    Voters can participate in the voting process by accessing the VoteEase platform through their web
-                    browsers or dedicated mobile applications. They need to log in with their credentials and cast their
-                    votes securely.
-                  </div>
+              </div>
+              <div
+                class="pb-4 min-w-full bg-white drop-shadow-md shadow-md rounded-md"
+              >
+                <h3
+                  class="flex items-center toggle-icon min-w-full cursor-pointer p-3"
+                >
+                  What customer support options are available?
+                  <span class="ml-auto ps-10 text-gray-500 text-3xl"
+                    >&#43;</span
+                  >
+                </h3>
+                <div class="hidden faq-body text-left ps-10">
+                  VoteEase offers customer support channels, such as email and
+                  online chat, to assist users with any issues or queries they
+                  may have.
                 </div>
-                <div class="pb-4 border-b">
-                  <h3 class="flex items-center">
-                    How do I register to use VoteEase?
-                    <span class="ml-auto text-gray-500 cursor-pointer toggle-icon">&#43;</span>
-                  </h3>
-                  <div class="hidden faq-body">
-                    VoteEase provides a simple registration process. Users can sign up using their email address and
-                    create
-                    a secure password to access their accounts.
-                  </div>
-                </div>
-                <div class="pb-4 border-b">
-                  <h3 class="flex items-center">
-                    Is VoteEase compliant with data protection regulations?
-                    <span class="ml-auto text-gray-500 cursor-pointer toggle-icon">&#43;</span>
-                  </h3>
-                  <div class="hidden faq-body">
-                    Yes, VoteEase complies with relevant data protection regulations and prioritizes the privacy and
-                    security of user data.
-                  </div>
-                </div>
-                <div class="pb-4 border-b">
-                  <h3 class="flex items-center">
-                    What customer support options are available?
-                    <span class="ml-auto text-gray-500 cursor-pointer toggle-icon">&#43;</span>
-                  </h3>
-                  <div class="hidden faq-body">
-                    VoteEase offers customer support channels, such as email and online chat, to assist users with any
-                    issues or queries they may have.
-                  </div>
-                </div>
-                <div class="pb-4 border-b">
-                  <h3 class="flex items-center">
-                    How are voting results calculated and displayed?
-                    <span class="ml-auto text-gray-500 cursor-pointer toggle-icon">&#43;</span>
-                  </h3>
-                  <div class="hidden faq-body">
-                    VoteEase tallies the votes in real-time and presents the results through clear and informative
-                    charts or
-                    graphs. The results can be accessed securely by authorized individuals.
-                  </div>
+              </div>
+              <div
+                class="pb-4 min-w-full bg-white drop-shadow-md shadow-md rounded-md"
+              >
+                <h3
+                  class="flex items-center toggle-icon min-w-full cursor-pointer p-3"
+                >
+                  How are voting results calculated and displayed?
+                  <span class="ml-auto ps-10 text-gray-500 text-3xl"
+                    >&#43;</span
+                  >
+                </h3>
+                <div class="hidden faq-body text-left ps-10">
+                  VoteEase tallies the votes in real-time and presents the
+                  results through clear and informative charts or graphs. The
+                  results can be accessed securely by authorized individuals.
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <!-- Section: Design Block -->
+    </section>
+    <!-- Section: Design Block -->
 
-    </div>
-  </main>
-  <!-- JavaScript for FAQ Toggle -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script type="text/javascript" src="faq.js"></script>
-  <script>
-    // Toggle FAQ answer visibility
-    $(document).ready(function () {
-      $('.toggle-icon').click(function () {
-        $(this).toggleClass('text-gray-500 text-blue-500');
-        $(this).closest('h3').next('.faq-body').slideToggle();
+    <!-- footer -->
+    <div id="footer"></div>
+    <script>
+      // Toggle FAQ answer visibility
+      $(document).ready(function () {
+        $(".toggle-icon").click(function () {
+          $(this).toggleClass("text-gray-500");
+          $(this).closest("h3").next(".faq-body").slideToggle();
+        });
       });
-    });
-  </script>
-  <!-- footer -->
-  <div id="footer"></div>
+    </script>
 
-  <!-- header and footer js -->
-  <script>
-    $(() => {
-      $("#header").load("./components/header.html");
-      $("#footer").load("./components/footer.html");
-    });
-  </script>
-  <style>
-    body {
-      background-image: url('background.jpg');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      opacity: 1;
-      /* Adjust the opacity value as needed (0 to 1) */
-    }
-
-    /* Exclude header and footer from the background and opacity styles */
-    body> :not(#header):not(#footer) {
-      background: none;
-      opacity: 0.9;
-    }
-  </style>
-</body>
-
+    <!-- header and footer js -->
+    <script>
+      $(() => {
+        $("#header").load("./components/header.html");
+        $("#footer").load("./components/footer.html");
+      });
+    </script>
+  </body>
 </html>
