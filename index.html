@@ -6,12 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>VoteEASE</title>
 
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- google icons -->
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
     />
+    <!-- google fonts - poppins -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
     <!-- tailwind css file -->
-    <link href="/dist/output.css" rel="stylesheet" />
+    <link href="/css/output.css" rel="stylesheet" />
 
     <!-- jquery -->
     <script
@@ -20,24 +29,60 @@
       crossorigin="anonymous"
     ></script>
   </head>
-  <body class="bg-slate-900 text-white">
+  <body>
     <!-- header -->
-    <div id="header"></div>
+    <div id="header" class="z-50"></div>
 
-    <section class="text-center mt-16">
-      <h2 class="text-5xl font-bold">Vote Online with EASE | VoteEASE</h2>
-      <p class="text-xl mt-2 italic">Empowering Digital Democracy</p>
+    <!-- hero section -->
+    <section
+      data-aos="fade-up"
+      class="text-center overflow-x-hidden -mt-16 w-screen h-screen flex flex-col justify-center items-center text-slate-700"
+    >
+      <canvas
+        id="myChart"
+        class="w-auto h-screen absolute top-0 start-0 z-0 object-cover"
+      ></canvas>
+
+      <h2
+        class="text-4xl pt-20 z-50 md:text-5xl font-semibold xl:text-6xl font-Poppins"
+      >
+        Vote Online with <span class="text-purple-600">EASE</span> | Vote<span
+          class="text-sky-600 italic"
+          >EASE</span
+        >
+      </h2>
+      <p class="text-lg md:text-xl mt-2 italic font-semibold z-50">
+        Empowering Digital Democracy
+      </p>
+
+      <div class="flex space-x-7 mt-10 z-50">
+        <a
+          href="/login"
+          class="bg-sky-500 text-white w-40 font-Poppins font-semibold shadow-md hover:bg-sky-800 duration-200 ease-linear py-2 rounded-md"
+          >Login</a
+        ><a
+          href="/register"
+          class="bg-sky-500 text-white w-40 font-Poppins font-semibold shadow-md hover:bg-sky-800 duration-200 ease-linear py-2 rounded-md"
+          >Register Free</a
+        >
+      </div>
     </section>
 
     <!-- key feature section -->
     <section class="mt-16">
-      <div class="container mx-auto">
-        <h3 class="text-3xl font-bold text-center mb-8">
-          What We <span class="text-emerald-400 text-4xl">OFFER</span>
+      <div class="container mx-auto w-screen flex-col flex items-center">
+        <h3
+          class="text-4xl lg:text-5xl font-bold text-center mb-8 text-slate-600"
+        >
+          What We
+          <span class="text-emerald-400">OFFER</span>
         </h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <!-- offers -->
+        <div
+          class="grid grid-cols-1 mt-16 sm:grid-cols-2 md:grid-cols-3 gap-8 w-fit h-fit"
+        >
           <div
-            class="bg-purple-800 rounded-lg p-8 mx-4 sm:mx-0 hover:bg-emerald-500 hover:rotate-6 ease-in duration-300 shadow-2xl shadow-purple-500/50 hover:shadow-emerald-500/50"
+            class="from-purple-400/60 bg-gradient-to-bl to-purple-800/90 cursor-pointer rounded-tr-2xl rounded-bl-2xl p-8 mx-4 sm:mx-0 hover:scale-105 hover:bg-purple-500/80 max-w-sm ease-in duration-300 shadow-2xl text-white"
           >
             <h4 class="text-2xl font-bold mb-4">
               Easy and Intuitive Interface
@@ -47,8 +92,9 @@
               experience.
             </p>
           </div>
+
           <div
-            class="bg-purple-800 rounded-lg p-8 mx-4 sm:mx-0 hover:bg-emerald-500 hover:rotate-6 ease-in duration-300 shadow-2xl shadow-purple-500/50 hover:shadow-emerald-500/50"
+            class="from-purple-400/60 bg-gradient-to-bl to-purple-800/90 cursor-pointer rounded-tr-2xl rounded-bl-2xl p-8 mx-4 sm:mx-0 hover:scale-105 hover:bg-purple-500/80 max-w-sm ease-in duration-300 shadow-2xl text-white"
           >
             <h4 class="text-2xl font-bold mb-4">Secure and Tamper-proof</h4>
             <p class="text-lg">
@@ -56,8 +102,9 @@
               measures.
             </p>
           </div>
+
           <div
-            class="bg-purple-800 rounded-lg p-8 mx-4 sm:mx-0 hover:bg-emerald-500 hover:rotate-6 ease-in duration-300 shadow-2xl shadow-purple-500/50 hover:shadow-emerald-500/50"
+            class="from-purple-400/60 bg-gradient-to-bl to-purple-800/90 cursor-pointer rounded-tr-2xl rounded-bl-2xl p-8 mx-4 sm:mx-0 hover:scale-105 hover:bg-purple-500/80 max-w-sm ease-in duration-300 shadow-2xl text-white"
           >
             <h4 class="text-2xl font-bold mb-4">
               Real-time Results and Analytics
@@ -67,8 +114,9 @@
               informed decisions.
             </p>
           </div>
+
           <div
-            class="bg-purple-800 rounded-lg p-8 mx-4 sm:mx-0 hover:bg-emerald-500 hover:rotate-6 ease-in duration-300 shadow-2xl shadow-purple-500/50 hover:shadow-emerald-500/50"
+            class="from-purple-400/60 bg-gradient-to-bl to-purple-800/90 cursor-pointer rounded-tr-2xl rounded-bl-2xl p-8 mx-4 sm:mx-0 hover:scale-105 hover:bg-purple-500/80 max-w-sm ease-in duration-300 shadow-2xl text-white"
           >
             <h4 class="text-2xl font-bold mb-4">
               Flexible Customization Options
@@ -78,8 +126,9 @@
               branding.
             </p>
           </div>
+
           <div
-            class="bg-purple-800 rounded-lg p-8 mx-4 sm:mx-0 hover:bg-emerald-500 hover:rotate-6 ease-in duration-300 shadow-2xl shadow-purple-500/50 hover:shadow-emerald-500/50"
+            class="from-purple-400/60 bg-gradient-to-bl to-purple-800/90 cursor-pointer rounded-tr-2xl rounded-bl-2xl p-8 mx-4 sm:mx-0 hover:scale-105 hover:bg-purple-500/80 max-w-sm ease-in duration-300 shadow-2xl text-white"
           >
             <h4 class="text-2xl font-bold mb-4">
               Multiple Authentication Methods
@@ -89,8 +138,9 @@
               authenticity.
             </p>
           </div>
+
           <div
-            class="bg-purple-800 rounded-lg p-8 mx-4 sm:mx-0 hover:bg-emerald-500 hover:rotate-6 ease-in duration-300 shadow-2xl shadow-purple-500/50 hover:shadow-emerald-500/50"
+            class="from-purple-400/60 bg-gradient-to-bl to-purple-800/90 cursor-pointer rounded-tr-2xl rounded-bl-2xl p-8 mx-4 sm:mx-0 hover:scale-105 hover:bg-purple-500/80 max-w-sm ease-in duration-300 shadow-2xl text-white"
           >
             <h4 class="text-2xl font-bold mb-4">
               Accessible and Inclusive Design
@@ -104,13 +154,22 @@
       </div>
     </section>
 
+    <!-- pricing -->
+    <section class=""></section>
+
     <!-- get start button -->
-    <section class="mt-16 text-center">
-      <a
-        href="#"
-        class="bg-purple-500 hover:bg-purple-400 text-white py-4 px-8 rounded-full text-2xl font-bold"
-        >Get Started</a
-      >
+    <section class="my-12 flex justify-center">
+      <div class="flex space-x-7 mt-10 z-50 text-center">
+        <a
+          href="/login"
+          class="bg-sky-500 text-white w-40 font-Poppins font-semibold shadow-md hover:bg-sky-800 duration-200 ease-linear py-3 rounded-md"
+          >Login</a
+        ><a
+          href="/register"
+          class="bg-sky-500 text-white w-40 font-Poppins font-semibold shadow-md hover:bg-sky-800 duration-200 ease-linear py-3 rounded-md"
+          >Register Free</a
+        >
+      </div>
     </section>
 
     <!-- footer -->
@@ -120,8 +179,77 @@
     <script>
       $(() => {
         $("#header").load("./components/header.html");
-         $("#footer").load("./components/footer.html");
+        $("#footer").load("./components/footer.html");
       });
+    </script>
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({ duration: 1000 });
+    </script>
+    <div></div>
+
+    <!-- chartjs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+      const ctx = document.getElementById("myChart");
+      let valueArray = [];
+      const labelValues = [];
+      for (let i = 0; i < 26; i++) {
+        valueArray[i] = Math.floor(Math.random() * 100);
+        labelValues[i] = "";
+      }
+
+      const chart = new Chart(ctx, {
+        data: {
+          labels: labelValues,
+          datasets: [
+            {
+              label: "",
+              data: valueArray,
+              borderWidth: 1,
+              type: "line",
+              backgroundColor: "#0ea5e950",
+              borderColor: "#0ea5e950",
+            },
+            {
+              label: "",
+              data: valueArray,
+              borderWidth: 1,
+              type: "bar",
+              backgroundColor: "#10b98150",
+            },
+          ],
+        },
+        options: {
+          scales: {
+            x: {
+              grid: {
+                display: false,
+              },
+
+              display: false,
+            },
+            y: {
+              grid: {
+                display: false,
+              },
+              ticks: {
+                display: false,
+              },
+              display: false,
+            },
+          },
+          maintainAspectRatio: false,
+        },
+      });
+
+      setInterval(() => {
+        const index = Math.floor(Math.random() * 26);
+        valueArray[index] = Math.floor(Math.random() * 100);
+        chart.update();
+      }, 200);
     </script>
   </body>
 </html>
