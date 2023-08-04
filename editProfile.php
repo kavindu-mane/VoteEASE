@@ -52,7 +52,7 @@ and open the template in the editor.
                     <div class="col-lg-1"></div> 
                 </div>
 
-                <form action="EditProfileClass.php" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+                <form action="Classes/EditProfileClass.php" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
 
                     <!--change password-->
                     <div class="row">
@@ -128,6 +128,7 @@ and open the template in the editor.
 
 
                         </div>
+                    </div>
                     </div>
                 </form>
         </section>

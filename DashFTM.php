@@ -42,7 +42,7 @@ $conn = $dbcon->getConnection();
             }
         </style>
 
-        <title>Expence Manager - Employee</title>
+        <title>Expence Manager - Finance</title>
     </head>
 
 
