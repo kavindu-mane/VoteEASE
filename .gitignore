@@ -4,3 +4,4 @@
 /nbproject
 .vscode/*
 .env
+.mvn/
