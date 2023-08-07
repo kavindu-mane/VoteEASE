@@ -83,7 +83,7 @@ and open the template in the editor.
                                         </div>
                                         <div class="card">
                                             <span class="input-group-text" id="basic-addon3">FeedBack</span>
-                                            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
+                                            <input type="text" placeholder="Send a feedback" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
                                         </div>
                                     </div>
                                 </div>
