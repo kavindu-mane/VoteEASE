@@ -24,8 +24,9 @@
         >
           <%-- left side --%>
           <form
-            class="flex flex-col justify-start w-full sm:w-3/4 text-left md:w-1/2 lg:w-full"
+            class="flex flex-col justify-start w-full sm:w-3/4 text-left md:w-1/2 lg:w-full bg-white p-4 rounded-md shadow-md drop-shadow-md"
           >
+            <h1 class="text-3xl text-sky-700 font-semibold font-Poppins mb-7">Login</h1>
             <%-- email --%>
             <div class="mb-6">
               <label
@@ -58,36 +59,16 @@
                 required
               />
             </div>
-            <div class="flex mb-6 justify-between items-center">
-              <%-- remeber --%>
-              <div class="flex items-center">
-                <div class="flex items-center h-5">
-                  <input
-                    id="remember"
-                    name="remember"
-                    type="checkbox"
-                    value="remember"
-                    class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300"
-                    required
-                  />
-                </div>
-                <label
-                  for="remember"
-                  class="ml-2 text-sm font-medium text-gray-900"
-                  >Remember me</label
-                >
-              </div>
-              <%-- forget password --%>
-              <a href="/forget" class="ml-2 text-sm font-medium text-gray-900"
-                >Forget password</a
-              >
-            </div>
             <button
               type="submit"
               class="text-white place-self-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-1/2 px-5 py-2.5 text-center"
             >
               Submit
             </button>
+
+              <div class="text-slate-800 text-center mt-3">Don't have account ? <a href="/register"
+                                                                                 class="text-sky-600 mx-1">Register</a>
+              </div>
           </form>
 
           <%-- right side --%>

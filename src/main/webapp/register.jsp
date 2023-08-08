@@ -5,15 +5,15 @@
     if (request.getParameter("alert") != null) {
         int alert = Integer.parseInt(request.getParameter("alert"));
         if(alert == 1)
-            message = "<h5 class="text-red-600">Please fill all the field!</h5>";
+            message = "<h5 class='text-red-600'>Please fill all the field!</h5>";
         else if(alert == 2)
-            message = "<h5 class="text-red-600">Email is already exist!</h5>";
+            message = "<h5 class='text-red-600'>Email is already exist!</h5>";
         else if(alert == 3)
-            message = "<h5 class="text-red-600">Conform password not match!</h5>";
+            message = "<h5 class='text-red-600'>Conform password not match!</h5>";
         else if(alert == 4)
-            message = "<h5 class="text-green-600">Registered successfully!</h5>";
+            message = "<h5 class='text-green-600'>Registered successfully!</h5>";
         else if(alert == 5)
-            message = "<h5 class="text-red-600">An error occurred. Please register again.!</h5>";
+            message = "<h5 class='text-red-600'>An error occurred. Please register again.!</h5>";
     }
 %>
 
@@ -43,14 +43,14 @@
         Registration
       </h1>
       <form
-        action="process-register.jsp" method="POST"
-        class="p-0 my-0 mx-8 outline-none font-sans text-base text-gray-600 text-center justify-center items-center"
+              action="process/process-register.jsp" method="POST"
+              class="p-0 my-0 mx-8 outline-none font-sans text-base text-gray-600 text-center justify-center items-center"
       >
         <%-- account type --%>
         <hr class="border border-gray-400 opacity-30 mx-10 my-4" />
         <div class="flex flex-wrap gap-4 justify-center">
           <label class="cursor-pointer">
-            <input type="radio" class="peer sr-only" name="account" id="voter-radio" value="voter" checked />
+            <input type="radio" class="peer sr-only" name="account" id="voter-radio" value="voter" checked/>
             <div
               class="voter-toggler w-40 max-w-xl rounded-md bg-slate-100 p-5 text-gray-600 ring-2 ring-transparent transition-all hover:shadow peer-checked:text-sky-600 peer-checked:ring-sky-500 peer-checked:ring-offset-2"
             >
@@ -230,16 +230,19 @@
             type="submit"
              class="py-3 px-0 mt-16 min-w-[20rem] w-1/2 my-3 mx-auto rounded-md border-0 bg-sky-700 text-lg font-semibold text-sky-50 hover:bg-sky-600"
           >
-            Resister
+            Register
           </button>
+            <div class="text-slate-800">Already have account ? <a href="/login" class="text-sky-600 mx-1">login</a>
+            </div>
         </div>
+            <%--error message--%>
+            <%=message%>
       </form>
     </div>
     <%-- add your code this area only: end--%>
 
     <%-- footer --%>
     <jsp:include page="components/footer.html"/>
-
     <%-- hide packages when user click voter registration --%>
     <script>
       $(document).ready(function () {

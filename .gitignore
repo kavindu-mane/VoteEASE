@@ -3,6 +3,7 @@
 /vendor/
 /nbproject
 .vscode/*
-.env
+src/main/resources/.env
 .mvn/
 target/
+out/

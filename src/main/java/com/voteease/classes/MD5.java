@@ -1,4 +1,4 @@
-package classes;
+package com.voteease.classes;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
