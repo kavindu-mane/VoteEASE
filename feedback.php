@@ -4,6 +4,10 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+
+<?php 
+    require_once 'Classes/Feedbackctrl.php';
+?>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -65,7 +69,9 @@ and open the template in the editor.
                 </div> 
             </div> 
 
-            <!-- Modal for Remove Member -->
+            <!-- Modal for Add feedback -->
+            
+            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate >
             <div class="modal fade" id="AddFeed" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" >
                     <div class="modal-content w-150">
@@ -78,27 +84,33 @@ and open the template in the editor.
                                 <div class="row">
                                     <div class="mb-3">
                                         <div class="card">
-                                            <span class="input-group-text" id="basic-addon3">UserName</span>
-                                            <p class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">Chamara Rodrigo</p>
+                                            <span class="input-group-text" id="basic-addon3">User Name</span>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="UserName"  class="form-control" placeholder="<?php echo $name ?>" id="basic-url" aria-describedby="basic-addon3 basic-addon4" disabled="">
+                                                </div>
                                         </div>
                                         <div class="card">
                                             <span class="input-group-text" id="basic-addon3">FeedBack</span>
-                                            <input type="text" placeholder="Send a feedback" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
+                                            <input type="text" name="FEED" placeholder="Type your feedback" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
                                         </div>
                                     </div>
                                 </div>
 
-                            </form>
+            
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Discard</button>
-                            <button type="button" class="btn btn-primary">Add</button>
+                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Discard</button>
+                            <button   name="add" class="btn btn-primary" type="submit">Add</button>
+                            
                         </div>
                     </div>
                 </div>
             </div>
 
-
+</form>
+                            <?php echo $FeedErr; 
+                                echo $Feed; 
+                            ?>
             <!-- Feedback Cards Section -->
             <div class="row" id="feedbackCardsSection">
                 <!-- Feedback cards will be dynamically generated here -->
