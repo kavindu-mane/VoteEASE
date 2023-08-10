@@ -1,20 +1,16 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Dashboard - VoteEASE</title>
-    <%-- custom css --%>
-    <link href="css/dashboard.css" rel="stylesheet" />
-    <%-- common imports --%>
-    <jsp:include page="components/common.html" />
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Admin Dashboard</title>
+    <link href="../css/dasboad.css" rel="stylesheet"/>
+    <jsp:include page="../components/common.html"/>
 </head>
-
 <body>
-<%-- header --%>
-<jsp:include page="components/header.html" />
+<jsp:include page="../components/header.html"/>
 <div class="container mx-auto py-8">
     <h1 class="text-4xl font-bold text-blue-600 mb-4">
         Welcome, [Admin Name]!
@@ -22,12 +18,9 @@
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
             <p class="text-gray-700 text-xl mb-2">Admin ID: [Admin ID]</p>
-            <p class="text-gray-700 text-xl mb-2">Email: [Admin Email]</p>
-            <p class="text-gray-700 text-xl mb-4">Phone: [Admin Phone]</p>
+            <p class="text-gray-700 text-xl mb-2">Account ID: [Account ID]</p>
         </div>
         <div>
-            <p class="text-gray-700 text-xl mb-2">Account ID: [Account ID]</p>
-            <p class="text-gray-700 text-xl mb-2">Role: [Admin Role]</p>
             <p class="text-gray-700 text-xl mb-4">
                 Last Login: [Last Login Date]
             </p>
@@ -35,7 +28,7 @@
     </div>
 
     <!-- Admin Actions -->
-    <div>
+    <div class="mt-20">
         <h2 class="text-2xl font-bold mt-8 mb-4">Admin Actions</h2>
         <ul
                 id="admin-actions"
@@ -43,25 +36,57 @@
         >
             <li>
                 <button
-                        onclick="createCampaign()"
+                        id="createCampaign"
                         class="px-4 py-2 bg-blue-600 text-white font-semibold rounded shadow"
                 >
-                    Create New Campaign
+                    Create Voting Campaign
                 </button>
             </li>
             <li>
                 <button
-                        onclick="viewCampaigns()"
+                        id="campaign"
                         class="px-4 py-2 bg-blue-600 text-white font-semibold rounded shadow"
                 >
-                    View Campaigns
+                    Manage Campaigns
+                </button>
+            </li>
+            <li>
+                <button
+                        id="voters"
+                        class="px-4 py-2 bg-blue-600 text-white font-semibold rounded shadow"
+                >
+                    Manage Voters
+                </button>
+            </li>
+            <li>
+                <button
+                        id="message"
+                        class="px-4 py-2 bg-blue-600 text-white font-semibold rounded shadow"
+                >
+                    View Messages
+                </button>
+            </li>
+            <li>
+                <button
+                        id="report"
+                        class="px-4 py-2 bg-blue-600 text-white font-semibold rounded shadow"
+                >
+                    View Reports
+                </button>
+            </li>
+            <li>
+                <button
+                        id="statistics"
+                        class="px-4 py-2 bg-blue-600 text-white font-semibold rounded shadow"
+                >
+                    View Statistics
                 </button>
             </li>
         </ul>
     </div>
 
     <!-- Voting Campaign Cards -->
-    <h2 class="text-2xl font-bold mt-8 mb-4">Voting Campaigns</h2>
+    <h2 class="text-2xl font-bold mt-12 mb-4">Voting Campaigns</h2>
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div class="p-6 bg-white rounded-lg shadow-md">
             <h3 class="text-xl font-semibold text-gray-800">Campaign 1</h3>
@@ -91,7 +116,7 @@
     </div>
 
     <!-- Future voting campaigns -->
-    <h2 class="text-2xl font-bold mt-8 mb-4">Future Voting Campaigns</h2>
+    <h2 class="text-2xl font-bold mt-16 mb-4">Future Voting Campaigns</h2>
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div class="p-6 bg-white rounded-lg shadow-md">
             <h3 class="text-xl font-semibold text-gray-800">Campaign 3</h3>
@@ -105,6 +130,7 @@
                 View Details
             </button>
         </div>
+
         <div class="p-6 bg-white rounded-lg shadow-md">
             <h3 class="text-xl font-semibold text-gray-800">Campaign 4</h3>
             <p class="text-gray-600">Start: August 16, 2023</p>
@@ -119,44 +145,42 @@
         </div>
     </div>
 </div>
-<jsp:include page="components/footer.html" />
-
+<jsp:include page="../components/footer.html"/>
 <script>
     function voteForCampaign(campaignId) {
         alert(`You voted for Campaign ${campaignId}`);
     }
 
-    function createCampaign() {
-        alert("Create New Campaign button clicked!");
-    }
+    const button6 = document.getElementById("createCampaign");
+    button6.addEventListener("click", function () {
+        window.location.href = "createCampaign.jsp";
+    });
 
-    function viewCampaigns() {
-        alert("View Campaigns button clicked!");
-    }
+    const button5 = document.getElementById("voters");
+    button5.addEventListener("click", function () {
+        window.location.href = "manageVoters.jsp";
+    });
 
-    function manageVoters() {
-        alert("Manage Voters button clicked!");
-    }
+    const button4 = document.getElementById("campaign");
+    button4.addEventListener("click", function () {
+        window.location.href = "manageCampaign.jsp";
+    });
 
-    function createVotingCampaign() {
-        alert("Create Voting Campaign button clicked!");
-    }
+    const button3 = document.getElementById("message");
+    button3.addEventListener("click", function () {
+        window.location.href = "viewMsg.jsp";
+    });
 
-    function manageCampaigns() {
-        alert("Manage Campaigns button clicked!");
-    }
+    const button2 = document.getElementById("report");
+    button2.addEventListener("click", function () {
+        window.location.href = "viewReport.jsp";
+    });
 
-    function viewMessages() {
-        alert("View Messages button clicked!");
-    }
-
-    function viewReports() {
-        alert("View Reports button clicked!");
-    }
-
-    function viewStatistics() {
-        alert("View Statistics button clicked!");
-    }
+    const button1 = document.getElementById("statistics");
+    button1.addEventListener("click", function () {
+        window.location.href = "viewStats.html";
+    });
 </script>
 </body>
 </html>
+
