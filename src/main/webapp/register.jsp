@@ -168,7 +168,8 @@
                     <span class="material-icons"> check_circle </span>
                   </div>
                   <div class="flex items-end justify-between">
-                    <p><span class="text-lg font-bold">One</span> Campaign</p>
+                    <p><span class="text-lg font-bold">1</span>
+                      Campaign</p>
                     <p class="text-sm font-bold">free</p>
                   </div>
                 </div>
@@ -187,7 +188,7 @@
                     <span class="material-icons"> check_circle </span>
                   </div>
                   <div class="flex items-end justify-between">
-                    <p><span class="text-lg font-bold">12</span> Campaigns</p>
+                    <p><span class="text-lg font-bold">5</span> Campaigns</p>
                     <p class="text-sm font-bold">Rs.5,500 / yr</p>
                   </div>
                 </div>
@@ -206,7 +207,7 @@
                     <span class="material-icons"> check_circle </span>
                   </div>
                   <div class="flex items-end justify-between">
-                    <p><span class="text-lg font-bold">Unlimited</span></p>
+                    <p><span class="text-lg font-bold">15</span></p>
                     <p class="text-sm font-bold">Rs.8,000 / yr</p>
                   </div>
                 </div>
