@@ -10,8 +10,6 @@
                 name="viewport"
                 content="width=device-width, initial-scale=1.0"/>
         <title>Dashboard | VoteEASE</title>
-        <%-- chart js--%>
-        <script src="js/chart_js.js"></script>
         <%-- common imports --%>
         <jsp:include page="/components/common.html"/>
 

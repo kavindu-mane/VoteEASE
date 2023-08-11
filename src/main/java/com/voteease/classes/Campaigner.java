@@ -3,6 +3,7 @@ package com.voteease.classes;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class Campaigner extends User{
@@ -11,7 +12,6 @@ public class Campaigner extends User{
     private String renew_date;
     private String campaigner_Id;
     private String available_campaigns;
-
     private ResultSet available_campaign_list;
 
     public Campaigner(String user_type, String email, String password, String name , String acc_type) {
@@ -60,6 +60,14 @@ public class Campaigner extends User{
             return a > 0;
         }
         return false;
+    }
+
+    public ResultSet getEndedCampaigns(Connection con) throws SQLException {
+        String query = "SELECT campaign_id , campaign_name , end_datetime from voting_campaign WHERE campaigner_Id = ? AND status = ?";
+        PreparedStatement pstmt = con.prepareStatement(query);
+        pstmt.setString(1, campaigner_Id);
+        pstmt.setString(2, "Ended");
+        return pstmt.executeQuery();
     }
 
     public String getName() {

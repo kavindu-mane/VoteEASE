@@ -1,10 +1,10 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <div class="w-full flex h-full flex-col p-5 py-10">
     <%-- breadcrumb --%>
     <div class="flex items-center mb-3">
             <span class="material-symbols-outlined mx-2"> dashboard </span
             ><a
-            href="#"
+            href="${pageContext.request.contextPath}/campaigner"
             class="hover:underline"
     >Dashboard</a
     >

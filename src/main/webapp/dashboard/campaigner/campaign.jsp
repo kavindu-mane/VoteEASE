@@ -2,7 +2,7 @@
 <%@ page import="com.voteease.classes.DBConnector" %>
 <%@ page import="com.voteease.classes.Campaigner" %>
 <%@ page import="java.sql.ResultSet" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%
     Campaign campaign = new Campaign(request.getParameter("c"));
     Campaigner campaigner = (Campaigner) request.getAttribute("campaigner");
@@ -14,7 +14,7 @@
 %>
 <script>
     let numberArray = [];
-    let voteArray = [];
+    let voterArray = [];
 </script>
 
 <div class="w-full flex-col xl:flex-row p-10 xl:gap-x-10 flex">
@@ -27,18 +27,20 @@
         <div class="w-full flex flex-col justify-center">
             <h2 class="text-lg font-semibold">Candidate Details</h2>
 
+            <%
+                ResultSet candidates = campaign.getCandidates();
+                if (!candidates.next()) {
+            %>
+            <div class="italic mt-5 text-center text-gray-500">
+                No candidate data found.
+            </div>
+            <%
+            } else {
+                String bg = "bg-white";
+            %>
             <%-- details table --%>
-            <div class="overflow-x-hidden sm:rounded-lg mt-3">
-                <%
-                    ResultSet candidates = campaign.getCandidates();
-                    if (!candidates.next()) {
-                %>
-                <div class="italic mt-5 text-center text-gray-500">
-                    No candidate data found.
-                </div>
-                <%
-                } else {
-                %>
+            <div
+                    class="overflow-x-hidden sm:rounded-lg mt-3 shadow-md drop-shadow-xl border-[0.1rem] border-slate-400/50">
                 <table class="w-full text-sm text-left text-gray-500 table-fixed">
                     <thead class="text-xs text-gray-50 uppercase bg-slate-400">
                         <tr>
@@ -63,8 +65,13 @@
                     <tbody>
                         <%
                             do {
+                                bg = bg.equals("bg-white") ? "bg-gray-200" : "bg-white";
                         %>
-                        <tr class="bg-white border-b even:bg-gray-200">
+                        <script>
+                            numberArray.push("<%=candidates.getString("candidate_number")%>");
+                            voterArray.push(<%=candidates.getString("vote_count")%>);
+                        </script>
+                        <tr class="<%=bg%> text-slate-700">
                             <td class="px-6 py-4"><%=candidates.getString("candidate_number")%>
                             </td>
                             <td class="px-6 py-4"><%=candidates.getString("candidate_name")%>
@@ -77,10 +84,10 @@
                         %>
                     </tbody>
                 </table>
-                <%
-                    }
-                %>
             </div>
+            <%
+                }
+            %>
         </div>
     </div>
     <%-- campaign details --%>
@@ -171,7 +178,7 @@
                 datasets: [
                     {
                         label: "No of Votes",
-                        data: voteArray,
+                        data: voterArray,
                         borderWidth: 1,
                     },
                 ],
@@ -212,7 +219,8 @@
 } else {
 %>
 <div class="h-full w-full flex flex-col justify-center items-center">
-    <img src="${pageContext.request.contextPath}/img/organizer-404.svg" class="w-11/12 md:w-1/3 h-auto"/>
+    <img src="${pageContext.request.contextPath}/img/organizer-404.svg" class="w-11/12 md:w-1/3 h-auto"
+         alt="error-image"/>
     <p class="text-3xl mt-10">Campaign Not Found.</p>
 </div>
 <%
