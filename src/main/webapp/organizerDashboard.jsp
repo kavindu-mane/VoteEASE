@@ -1,31 +1,22 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Organizer Dashboard</title>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
-    />
-    <!-- Load Tailwind CSS -->
-    <link href="/css/output.css" rel="stylesheet" />
-    <!-- custom css -->
-    <link href="/css/dasboad.css" rel="stylesheet" />
-    <!-- jquery -->
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.js"
-      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-      crossorigin="anonymous"
-    ></script>
+    <title>Organizer Dashboard - VoteEASE</title>
+    <%-- custom css --%>
+    <link href="css/dashboard.css" rel="stylesheet" />
+    <%-- common imports --%>
+    <jsp:include page="components/common.html"/>
   </head>
 
   <body>
-    <!-- header -->
-    <div id="header"></div>
+    <%-- header --%>
+    <jsp:include page="components/header.html"/>
 
-    <!-- add your code this area only: start -->
+    <%-- add your code this area only: start --%>
     <div class="container mx-auto py-8">
       <h1 class="text-4xl font-bold text-blue-600 mb-4">
         Welcome, [Organizer Name]!
@@ -33,7 +24,7 @@
       <p class="text-gray-700 text-xl mb-2">Organizer ID: [Organizer ID]</p>
       <p class="text-gray-700 text-xl mb-4">Account ID: [Account ID]</p>
 
-      <!-- Organizer Actions -->
+      <%-- Organizer Actions --%>
       <h2 class="text-2xl font-bold text-blue-600 mb-4">Organizer Actions</h2>
       <ul
         id="organizer-actions"
@@ -60,10 +51,10 @@
             View Reports
           </button>
         </li>
-        <!-- Add more organizer actions here -->
+        <%-- Add more organizer actions here --%>
       </ul>
 
-      <!-- Voting Campaign Cards -->
+      <%-- Voting Campaign Cards --%>
       <h2 class="text-2xl font-bold text-blue-600 mt-8 mb-4">
         Voting Campaigns
       </h2>
@@ -93,21 +84,12 @@
             View Votes
           </button>
         </div>
-        <!-- Add more voting campaign cards here -->
+        <%-- Add more voting campaign cards here --%>
       </div>
     </div>
-    <!-- add your code this area only: end-->
+    <%-- add your code this area only: end--%>
 
-    <!-- footer -->
-    <div id="footer"></div>
-
-    <!-- header and footer js -->
-    <script>
-      // jQuery to load header and footer
-      $(() => {
-        $("#header").load("./components/header.html");
-        $("#footer").load("./components/footer.html");
-      });
-    </script>
+    <%-- footer --%>
+    <jsp:include page="components/footer.html"/>
   </body>
 </html>

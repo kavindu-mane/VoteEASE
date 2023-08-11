@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,40 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>VoteEASE | Terms</title>
 
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
-    />
-    <!-- tailwind css file -->
-    <link href="/css/output.css" rel="stylesheet" />
-    <!-- jquery -->
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.js"
-      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-      crossorigin="anonymous"
-    ></script>
-    <!-- font awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <script
-      src="https://kit.fontawesome.com/a943423ab3.js"
-      crossorigin="anonymous"
-    ></script>
+    <%-- common imports --%>
+    <jsp:include page="components/common.html"/>
   </head>
   <body>
-    <!-- header -->
-    <div id="header"></div>
+    <%-- header --%>
+    <jsp:include page="components/header.html"/>
 
     <div class="flex justify-center">
-      <!-- card -->
+      <%-- card --%>
       <div
         class="flex rounded-md my-20 mx-3 flex-col font-sans max-w-7xl justify-center items-center text-slate-100"
       >
-        <!-- hero section -->
+        <%-- hero section --%>
         <div class="py-5 w-full h-24 flex items-center justify-center">
-          <!-- icon -->
+          <%-- icon --%>
           <div
             class="flex shadow-md items-center justify-center w-14 h-14 bg-purple-400 mr-5 rounded-full text-lg text-white"
           >
@@ -47,11 +29,11 @@
           </div>
           <div class="font-bold text-slate-600">
             <h2>TERMS OF SERVICE</h2>
-            <p>Last update on July 19 2023</p>
+            <p>Last update on July 19, 2023</p>
           </div>
         </div>
 
-        <!-- content -->
+        <%-- content --%>
         <div
           class="px-10 pr-5 bg-white text-slate-500 mt-10 rounded-lg shadow-md drop-shadow-md py-10"
         >
@@ -157,15 +139,7 @@
       </div>
     </div>
 
-    <!-- footer -->
-    <div id="footer"></div>
-
-    <!-- header and footer js -->
-    <script>
-      $(() => {
-        $("#header").load("./components/header.html");
-        $("#footer").load("./components/footer.html");
-      });
-    </script>
+    <%-- footer --%>
+    <jsp:include page="components/footer.html"/>
   </body>
 </html>
