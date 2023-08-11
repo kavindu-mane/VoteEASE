@@ -1,7 +1,7 @@
 <%@page import="com.voteease.classes.Voter" %>
 <%@page import="com.voteease.classes.DBConnector" %>
 <%@page import="com.voteease.classes.MD5" %>
-<%@ page import="com.voteease.classes.Campaigner" %>
+<%@page import="com.voteease.classes.Campaigner" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 
 <%

@@ -1,12 +1,14 @@
 package com.voteease.classes;
 
-import io.github.cdimascio.dotenv.Dotenv;
 import java.sql.*;
 
 public class DBConnector {
+    private static final String URL = "jdbc:mysql://localhost:3306/voteease";
+    private static final String DB_USER = "root";
+    private static final String DB_PW = "";
+    private static final String DRIVER = "com.mysql.jdbc.Driver";
     public static Connection getConnection() throws Exception{
-        Dotenv dotenv = Dotenv.load();
-        Class.forName(dotenv.get("DRIVER"));
-        return DriverManager.getConnection(dotenv.get("URL"),dotenv.get("DB_USER"),dotenv.get("DB_PW"));
+        Class.forName(DRIVER);
+        return DriverManager.getConnection(URL,DB_USER,DB_PW);
     }
 }

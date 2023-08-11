@@ -323,7 +323,7 @@
                   >
                     done
                   </span>
-                                    <span>Unlimited campaign for month</span>
+                                    <span>15 campaign for month</span>
                                 </li>
                                 <%-- item --%>
                                 <li class="flex items-center space-x-3">
