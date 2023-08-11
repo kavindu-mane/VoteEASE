@@ -136,6 +136,7 @@
 
             <div class="w-full flex justify-center">
                 <button
+                        id="submit"
                         type="submit"
                         class="bg-sky-600 group hover:bg-sky-700 mt-4 w-72 self-center text-white font-medium rounded-md text-sm px-8 py-2 text-center">
                     Create campaign
@@ -156,11 +157,47 @@
         edate.val(localISOTime);
         edate.prop("min", localISOTime);
 
+        $("#submit").click((event) => {
+            event.preventDefault();
+            let formData  = $("#campaign-form").serialize();
+            formData += "&account=<%=accountType%>&campaigner=<%=campaigner.getCampaigner_Id()%>"
+            console.log(formData)
+            Swal.fire({
+                title:"loading..",
+                html:'<div class="h-20 w-full overflow-hidden flex items-center justify-center"><span class="material-symbols-outlined text-7xl animate-spin text-sky-600">progress_activity</span></div>',
+            });
+
+            $.post("/process/process_new_campaign.jsp", formData, (data, status) => {
+                data = data.replace(/\s/g, "");
+                console.log(data)
+                Swal.close();
+                if (data === "1"){ // empty value
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Oops...',
+                        text: 'Please fill all fields!',
+                    })
+                }else if(data === "2" || status !== "success"){ // error
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                    })
+                }else if(data === "3"){ // success
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: 'Campaign created successfully!',
+                    })
+                }
+            })
+        })
+
     });
 </script>
 
 <%
-    if (accountType.equals(("Basic"))) {
+    if (accountType.equals(("basic"))) {
 %>
 <script>
     document.getElementById("show-statistic").disabled = true;

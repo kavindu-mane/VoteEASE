@@ -89,4 +89,8 @@ public class Campaigner extends User{
     public ResultSet getAvailable_campaign_list() {
         return available_campaign_list;
     }
+
+    public String getCampaigner_Id() {
+        return campaigner_Id;
+    }
 }
