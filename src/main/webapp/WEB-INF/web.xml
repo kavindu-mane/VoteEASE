@@ -68,17 +68,17 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>organizer</servlet-name>
-        <jsp-file>organizerDashboard.jsp</jsp-file>
+        <servlet-name>campaigner</servlet-name>
+        <jsp-file>campaignerDashboard.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
-        <servlet-name>organizer</servlet-name>
-        <url-pattern>/organizer</url-pattern>
-        <url-pattern>/organizer/campaign</url-pattern>
-        <url-pattern>/organizer/campaign/candidates</url-pattern>
-        <url-pattern>/organizer/ended</url-pattern>
-        <url-pattern>/organizer/new</url-pattern>
-        <url-pattern>/organizer/settings</url-pattern>
+        <servlet-name>campaigner</servlet-name>
+        <url-pattern>/campaigner</url-pattern>
+        <url-pattern>/campaigner/campaign</url-pattern>
+        <url-pattern>/campaigner/campaign/candidates</url-pattern>
+        <url-pattern>/campaigner/ended</url-pattern>
+        <url-pattern>/campaigner/new</url-pattern>
+        <url-pattern>/campaigner/settings</url-pattern>
     </servlet-mapping>
 
     <error-page>

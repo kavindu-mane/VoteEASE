@@ -1,5 +1,7 @@
-<%@ page import="java.util.Objects" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page import="com.voteease.classes.Campaigner" %>
+<%@page import="com.voteease.classes.DBConnector" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -13,6 +15,23 @@
         <%-- common imports --%>
         <jsp:include page="/components/common.html"/>
 
+        <%-- create object--%>
+        <%
+            Campaigner campaigner = new Campaigner("35432559");
+            try {
+                campaigner.loadInfo(DBConnector.getConnection());
+            } catch (Exception e) {
+        %>
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+            })
+        </script>
+        <%
+            }
+        %>
     </head>
 
     <body>
@@ -37,66 +56,85 @@
               how_to_vote </span
             >Available Campaigns
                     </p>
-                    <%-- available campaigns --%>
                     <div class="ps-3 text-md font-normal mt-3 text-gray-300">
-                        <p class="bg-sky-800 cursor-pointer rounded-s-full p-3 flex items-center">
-              <span class="material-symbols-outlined me-2 text-[1.2rem] text-emerald-400">
-                task_alt </span
-              ><span class="truncate">Campaign -1</span>
-                        </p>
-                        <p class="hover:bg-slate-700 me-4 cursor-pointer rounded-md p-3 flex items-center">
-              <span class="material-symbols-outlined me-2 text-[1.2rem] text-emerald-400">
-                task_alt </span
-              ><span class="truncate">Campaign -2</span>
-                        </p>
-                        <p class="hover:bg-slate-700 me-4 cursor-pointer rounded-md p-3 flex items-center">
-              <span class="material-symbols-outlined me-2 text-[1.2rem] text-emerald-400">
-                task_alt </span
-              ><span class="truncate">Campaign -3</span>
-                        </p>
-                        <p class="hover:bg-slate-700 me-4 cursor-pointer rounded-md p-3 flex items-center">
-              <span class="material-symbols-outlined me-2 text-[1.2rem] text-yellow-300">
-                timer </span
-              ><span class="truncate">Campaign -4</span>
-                        </p>
+                        <%-- available campaigns --%>
+                        <%
+                            try {
+                                ResultSet rs = campaigner.getAvailable_campaign_list();
+                                while (rs.next()) {
+                                    String status = rs.getString("status");
+                                    if (status.equals("Active") || status.equals("Scheduled")) {
+                                        String URL = "/campaigner/campaign?c=" + rs.getString("campaign_id");
+                                        String iconColor = status.equals("Active") ? "text-emerald-400" :
+                                                "text-yellow-300";
+                                        String icon = status.equals("Active") ? "task_alt" : "timer";
+                        %>
+                        <a href="<%=URL %>"
+                           class="hover:bg-slate-700 me-4 cursor-pointer rounded-md p-3 flex
+                        items-center">
+              <span class="material-symbols-outlined me-2 text-[1.2rem] <%=iconColor%>">
+                <%=icon%> </span
+              ><span class="truncate"><%=rs.getString("campaign_name")%></span>
+                        </a>
+                        <%
+                                }
+                            }
+                        } catch (Exception e) {
+                        %>
+                        <script>
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Something went wrong!',
+                            })
+                        </script>
+                        <%
+                            }
+                        %>
                     </div>
                 </div>
 
                 <%-- ended campaign --%>
-                <p
+                <a
+                        href="${pageContext.request.contextPath}/campaigner/ended"
                         class="flex items-end hover:bg-slate-700 cursor-pointer text-gray-400 font-bold text-sm my-2 ms-3 me-4 p-3 hover:text-gray-300 rounded-md">
           <span class="material-symbols-outlined text-sky-400 me-2 text-[1.2rem]"> timeline </span
           >Ended Campaigns
-                </p>
+                </a>
                 <%-- new campaign --%>
-                <p
+                <a
+                        href="${pageContext.request.contextPath}/campaigner/new"
                         class="flex items-end hover:bg-slate-700 cursor-pointer text-gray-400 font-bold text-sm my-2 ms-3 me-4 p-3 hover:text-gray-300 rounded-md">
           <span class="material-symbols-outlined text-sky-400 me-2 text-[1.2rem]"> add_circle </span
           >New Campaigns
-                </p>
+                </a>
 
                 <hr class="border-transparent border-b-gray-600 border-b-[0.1rem] my-4"/>
 
                 <%-- settings --%>
-                <p
+                <a
+                        href="${pageContext.request.contextPath}/campaigner/settings"
                         class="flex items-end hover:bg-slate-700 cursor-pointer text-gray-400 font-bold text-sm my-2 ms-3 me-4 p-3 hover:text-gray-300 rounded-md">
           <span class="material-symbols-outlined text-sky-400 me-2 text-[1.2rem]"> settings </span
           >Account Settings
-                </p>
+                </a>
 
                 <%-- account details --%>
                 <div class="ps-5 text-md mt-10 gap-y-2 flex flex-col">
                     <div class="flex gap-x-2">
-                        <h3 class="text-gray-300">Package :</h3>
-                        <h3 class="text-green-400">Business</h3>
+                        <h3 class="text-gray-300">Account Type :</h3>
+                        <h3 class="text-green-400"><%=campaigner.getAcc_type()%>
+                        </h3>
                     </div>
                     <div class="flex gap-x-2">
                         <h3 class="text-gray-300">Available Campaigns :</h3>
-                        <h3 class="text-green-400">1</h3>
+                        <h3 class="text-green-400"><%=campaigner.getAvailable_campaigns()%>
+                        </h3>
                     </div>
                     <div class="flex gap-x-2">
                         <h3 class="text-gray-300">Next payment date :</h3>
-                        <h3 class="text-green-400">2023-10-15</h3>
+                        <h3 class="text-green-400"><%=campaigner.getRenew_date()%>
+                        </h3>
                     </div>
                 </div>
             </div>
@@ -106,7 +144,8 @@
                 <%-- header --%>
                 <div
                         class="text-lg flex items-center justify-end bg-white shadow-xl py-3 px-5 text-sky-600 font-semibold">
-                    <p class="text-right">ACB Group</p>
+                    <p class="text-right"><%=campaigner.getName()%>
+                    </p>
                     <div class="text-slate-700 ms-5 flex items-center cursor-pointer hover:text-sky-600">
                         <span class="material-symbols-outlined me-2"> logout </span>
                     </div>
@@ -114,27 +153,28 @@
 
                 <%
                     String currentURL = request.getRequestURI();
-
+                    request.setAttribute("campaigner" ,campaigner);
                     switch (currentURL.toLowerCase()) {
-                        case "/organizer/campaign": %>
-                <jsp:include page="dashboard/organizer/campaign.jsp"/>
+                        case "/campaigner/campaign": %>
+                <jsp:include page="/dashboard/campaigner/campaign.jsp"/>
                 <% break;
-                    case "/organizer/campaign/candidates": %>
-                <jsp:include page="dashboard/organizer/candidates.jsp"/>
+                    case "/campaigner/campaign/candidates": %>
+                <jsp:include page="/dashboard/campaigner/candidates.jsp"/>
                 <% break;
-                    case "/organizer/ended": %>
-                <jsp:include page="/dashboard/organizer/ended_campaign.jsp"/>
+                    case "/campaigner/ended": %>
+                <jsp:include page="/dashboard/campaigner/ended_campaign.jsp"/>
                 <% break;
-                    case "/organizer/new": %>
-                <jsp:include page="/dashboard/organizer/new_campaign.jsp"/>
+                    case "/campaigner/new": %>
+                <jsp:include page="/dashboard/campaigner/new_campaign.jsp"/>
                 <% break;
-                    case "/organizer/settings": %>
-                <jsp:include page="/dashboard/organizer/settings.jsp"/>
+                    case "/campaigner/settings": %>
+                <jsp:include page="/dashboard/campaigner/settings.jsp"/>
                 <% break;
                     default:%>
-                <div class="h-full w-full flex justify-center items-center">
+                <div class="h-full w-full flex flex-col justify-center items-center">
                     <img src="${pageContext.request.contextPath}/img/no-data.svg" alt="no -data"
                          class="max-w-md p-10 opacity-50"/>
+                    <p class="text-3xl">Welcome to VoteEASE.</p>
                 </div>
                 <%
                     }
