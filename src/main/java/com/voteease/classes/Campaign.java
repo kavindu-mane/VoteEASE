@@ -28,7 +28,7 @@ public class Campaign {
         this.campaignerID = campaignerID;
     }
 
-    public Campaign(String name, String edate, String sdate, String voteCount, String loginReq, String showStat, String campaignerID) {
+    public Campaign(String name, String edate, String sdate, String campaignerID, String voteCount, String loginReq, String showStat) {
         this.campaignName = name;
         this.endDateTime = edate;
         this.startDateTime = sdate;
@@ -38,35 +38,26 @@ public class Campaign {
         this.showStat = showStat;
     }
 
-    public Boolean createCampaign(Connection con, String accType) {
-        try {
-
-            String query;
-            PreparedStatement pstmt;
-            if (accType.equals("basic")) {
-                query = "INSERT INTO voting_campaign (campaign_name , start_datetime , end_datetime , campaigner_id) VALUES (?, ? , ? , ?)";
-                pstmt = con.prepareStatement(query);
-                pstmt.setString(1, campaignName);
-                pstmt.setString(2, startDateTime);
-                pstmt.setString(3, endDateTime);
-                pstmt.setString(4, campaignerID);
-            } else {
-                query = "INSERT INTO voting_campaign (campaign_name , start_datetime , end_datetime , max_votes , login_required , show_stat , campaigner_id) VALUES (?, ? , ? , ? , ? , ? , ?)";
-                pstmt = con.prepareStatement(query);
-                pstmt.setString(1, campaignName);
-                pstmt.setString(2, startDateTime);
-                pstmt.setString(3, endDateTime);
-                pstmt.setString(4, maxVotes);
-                pstmt.setString(5, loginRequired);
-                pstmt.setString(6, showStat);
-                pstmt.setString(4, campaignerID);
-            }
-
-            int a = pstmt.executeUpdate();
-            return a > 0;
-        }catch (Exception e){
-            throw new RuntimeException(e);
+    public Boolean createCampaign(Connection con, String accType) throws SQLException {
+        String query;
+        PreparedStatement pstmt;
+        if (accType.equals("basic")) {
+            query = "INSERT INTO voting_campaign (campaign_name , start_datetime , end_datetime , campaigner_id) VALUES (?, ? , ? , ?)";
+            pstmt = con.prepareStatement(query);
+        } else {
+            query = "INSERT INTO voting_campaign (campaign_name , start_datetime , end_datetime , campaigner_id , max_votes , login_required , show_stat) VALUES (?, ? , ? , ? , ? , ? , ?)";
+            pstmt = con.prepareStatement(query);
+            pstmt.setString(5, maxVotes);
+            pstmt.setString(6, loginRequired);
+            pstmt.setString(7, showStat);
         }
+        pstmt.setString(1, campaignName);
+        pstmt.setString(2, startDateTime);
+        pstmt.setString(3, endDateTime);
+        pstmt.setString(4, campaignerID);
+
+        int a = pstmt.executeUpdate();
+        return a > 0;
     }
 
     public boolean getInfo(Connection con) throws SQLException {
