@@ -17,12 +17,13 @@
     <%-- header --%>
     <jsp:include page="components/header.html"/>
     
-    <div class="container">
+     <div class="container">
         <%
             ArrayList<String[]> dataRows = (ArrayList<String[]>) request.getAttribute("dataRows");
 
             for (String[] row : dataRows) {
         %>
+            
            <%-- <div>
                 <p><strong>Account ID:</strong> <%= row[0] %></p>
                 <p><strong>Account Type:</strong> <%= row[1] %></p>
