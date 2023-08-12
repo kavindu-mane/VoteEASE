@@ -16,32 +16,44 @@
   <body>
     <%-- header --%>
     <jsp:include page="components/header.html"/>
+    
+    <div class="container">
+        <%
+            ArrayList<String[]> dataRows = (ArrayList<String[]>) request.getAttribute("dataRows");
+
+            for (String[] row : dataRows) {
+        %>
+           <%-- <div>
+                <p><strong>Account ID:</strong> <%= row[0] %></p>
+                <p><strong>Account Type:</strong> <%= row[1] %></p>
+                <p><strong>Email:</strong> <%= row[2] %></p>
+                <p><strong>Voter ID:</strong> <%= row[3] %></p>
+                <p><strong>Voter Name:</strong> <%= row[4] %></p>
+                <hr>
+            </div>--%>
+        <%
+            }
+        %>
+    </div>
 
     <%-- add your code this area only: start --%>
     <div class="container mx-auto py-8">
-      <h1 class="text-3xl font-bold mb-4">Welcome, [Voter Name]!</h1>
+      <h1 class="text-3xl font-bold mb-4">Welcome, <%= row[4] %>!</h1>
       <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <p class="text-lg mb-2">
-            <span class="font-semibold">Voter ID:</span> [Voter ID]
+            <span class="font-semibold">Voter ID:</span> <%= row[3] %>
           </p>
           <p class="text-lg mb-2">
-            <span class="font-semibold">Email:</span> [Voter Email]
-          </p>
-          <p class="text-lg mb-2">
-            <span class="font-semibold">Phone:</span> [Voter Phone]
+            <span class="font-semibold">Email:</span> <%= row[2] %>
           </p>
         </div>
         <div>
           <p class="text-lg mb-2">
-            <span class="font-semibold">Account ID:</span> [Account ID]
+            <span class="font-semibold">Account ID:</span> <%= row[0] %>
           </p>
           <p class="text-lg mb-2">
-            <span class="font-semibold">Registration Date:</span> [Registration
-            Date]
-          </p>
-          <p class="text-lg mb-2">
-            <span class="font-semibold">Status:</span> [Voter Status]
+            <span class="font-semibold">Status: </span>Voter
           </p>
         </div>
       </div>

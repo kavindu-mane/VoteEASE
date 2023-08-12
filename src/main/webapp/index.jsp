@@ -201,6 +201,15 @@
                   </span>
                                     <span>Customize campaign rules</span>
                                 </li>
+                                    <%-- item --%>
+                                    <li class="flex items-center space-x-3">
+                  <span
+                          class="material-symbols-outlined text-red-500 font-bold"
+                  >
+                    close
+                  </span>
+                                        <span>News Feeds for campaigns</span>
+                                    </li>
                             </ul>
                             <a
                                     href="register"
@@ -272,6 +281,15 @@
                   </span>
                                     <span>Customize campaign rules</span>
                                 </li>
+                                <%-- item --%>
+                                <li class="flex items-center space-x-3">
+                  <span
+                          class="material-symbols-outlined text-green-500 font-bold"
+                  >
+                    done
+                  </span>
+                                    <span>5 News Feeds for each campaign</span>
+                                </li>
                             </ul>
                             <a
                                     href="register"
@@ -323,7 +341,7 @@
                   >
                     done
                   </span>
-                                    <span>Unlimited campaign for month</span>
+                                    <span>15 campaign for month</span>
                                 </li>
                                 <%-- item --%>
                                 <li class="flex items-center space-x-3">
@@ -342,6 +360,15 @@
                     done
                   </span>
                                     <span>Customize campaign rules</span>
+                                </li>
+                                <%-- item --%>
+                                <li class="flex items-center space-x-3">
+                  <span
+                          class="material-symbols-outlined text-green-500 font-bold"
+                  >
+                    done
+                  </span>
+                                    <span>10 News Feeds for each campaign</span>
                                 </li>
                             </ul>
                             <a
