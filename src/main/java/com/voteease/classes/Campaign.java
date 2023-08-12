@@ -16,6 +16,7 @@ public class Campaign {
     private String loginRequired;
     private String showStat;
     private ResultSet candidates;
+    private ResultSet newsFeed;
 
     public Campaign(String campaignID) {
         this.campaignID = campaignID;
@@ -99,8 +100,26 @@ public class Campaign {
         return a > 0;
     }
 
+    public boolean addNewsfeed(Connection con ,String description , String title) throws SQLException {
+        String query = "INSERT INTO newsfeed (title , description  , campaign_id ) VALUES (?, ? , ?)";
+        PreparedStatement pstmt = con.prepareStatement(query);
+        pstmt.setString(1, title);
+        pstmt.setString(2, description);
+        pstmt.setString(3, campaignID);
+        int a = pstmt.executeUpdate();
+        return a > 0;
+    }
+
     public boolean deleteCandidate(Connection con , String id) throws SQLException {
         String query = "DELETE FROM candidate WHERE candidate_id = ?";
+        PreparedStatement pstmt = con.prepareStatement(query);
+        pstmt.setString(1, id);
+        int a = pstmt.executeUpdate();
+        return a>0;
+    }
+
+    public boolean deleteNewsfeed(Connection con , String id) throws SQLException {
+        String query = "DELETE FROM newsfeed WHERE newsfeed_id = ?";
         PreparedStatement pstmt = con.prepareStatement(query);
         pstmt.setString(1, id);
         int a = pstmt.executeUpdate();
@@ -131,6 +150,13 @@ public class Campaign {
         pstmt.setString(3, campaignID);
         int a = pstmt.executeUpdate();
         return a>0;
+    }
+
+    public void loadNewsFeed(Connection con) throws SQLException {
+        String query = "SELECT * FROM  newsfeed WHERE campaign_id = ?";
+        PreparedStatement pstmt = con.prepareStatement(query);
+        pstmt.setString(1, campaignID);
+        newsFeed = pstmt.executeQuery();
     }
 
     public String getCampaignID() {
@@ -171,5 +197,9 @@ public class Campaign {
 
     public ResultSet getCandidates() {
         return candidates;
+    }
+
+    public ResultSet getNewsFeed() {
+        return newsFeed;
     }
 }

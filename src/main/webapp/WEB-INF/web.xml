@@ -79,6 +79,7 @@
         <url-pattern>/campaigner/ended</url-pattern>
         <url-pattern>/campaigner/new</url-pattern>
         <url-pattern>/campaigner/settings</url-pattern>
+        <url-pattern>/campaigner/campaign/newsfeed</url-pattern>
     </servlet-mapping>
 
     <error-page>

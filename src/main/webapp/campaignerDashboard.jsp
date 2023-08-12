@@ -168,6 +168,9 @@
                     case "/campaigner/settings": %>
                 <jsp:include page="/dashboard/campaigner/settings.jsp"/>
                 <% break;
+                    case "/campaigner/campaign/newsfeed": %>
+                <jsp:include page="/dashboard/campaigner/newsFeed.jsp"/>
+                <% break;
                     default:%>
                 <div class="h-full w-full flex flex-col justify-center items-center">
                     <img src="${pageContext.request.contextPath}/img/no-data.svg" alt="no -data"

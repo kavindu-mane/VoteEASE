@@ -288,7 +288,7 @@
                   >
                     done
                   </span>
-                                    <span>5 News Feeds for each campaign</span>
+                                    <span>News Feeds for campaigns</span>
                                 </li>
                             </ul>
                             <a
@@ -368,7 +368,7 @@
                   >
                     done
                   </span>
-                                    <span>10 News Feeds for each campaign</span>
+                                    <span>News Feeds for campaigns</span>
                                 </li>
                             </ul>
                             <a

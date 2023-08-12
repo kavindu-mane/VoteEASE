@@ -157,10 +157,9 @@
         edate.val(localISOTime);
         edate.prop("min", localISOTime);
 
-
-        <%--if ("<%=campaigner.getAvailable_campaigns()%>" < 1){--%>
-
-        <%--}--%>
+        if(parseInt("<%=campaigner.getAvailable_campaigns()%>") < 1){
+            $("#submit").prop("disabled" , true);
+        }
 
         $("#submit").click((event) => {
             event.preventDefault();

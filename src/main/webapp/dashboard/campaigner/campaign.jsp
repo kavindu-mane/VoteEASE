@@ -146,11 +146,12 @@
                         class="rounded py-2 bg-green-600 text-white font-semibold w-full hover:bg-green-500 text-center">
                     Candidates
                 </a>
-                <button
+                <a
+                        href="${pageContext.request.contextPath}/campaigner/campaign/newsfeed?c=<%=request.getParameter("c")%>"
                         id="news-feed-btn"
-                        class="rounded py-2 disabled:bg-gray-400 bg-green-600 text-white font-semibold hover:bg-green-500 disabled:cursor-not-allowed w-full">
+                        class="rounded py-2 disabled:bg-gray-400 bg-green-600 text-white font-semibold hover:bg-green-500 disabled:cursor-not-allowed w-full text-center">
                     News Feed<i class="fa-solid fa-crown text-yellow-300 ms-1 text-sm"></i>
-                </button>
+                </a>
             </div>
         </div>
         <%-- campaign rules --%>
