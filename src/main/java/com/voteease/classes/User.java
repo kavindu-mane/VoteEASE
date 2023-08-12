@@ -3,13 +3,14 @@ package com.voteease.classes;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class User {
     private String account_id;
     private String user_type;
     private String email;
     private String password;
-    private final String account_status = "Active";
+    private String account_status = "Active";
 
     public User(String user_type, String email, String password) {
         this.user_type = user_type;
@@ -50,6 +51,19 @@ public class User {
         pstmt.setString(4, account_status);
         int a = pstmt.executeUpdate();
         return a > 0;
+    }
+
+    public void loadInto(Connection con , String userID) throws SQLException {
+        String query = "SELECT * FROM  account WHERE account_id = ?";
+        PreparedStatement pstmt = con.prepareStatement(query);
+        pstmt.setString(1, userID);
+        ResultSet rs = pstmt.executeQuery();
+        if (rs.next()) {
+            this.account_id = rs.getString("account_id");
+            this.email = rs.getString("email");
+            this.account_status = rs.getString("account_status");
+            this.user_type = rs.getString("user_type");
+        }
     }
 
     // getters

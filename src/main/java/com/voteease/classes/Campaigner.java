@@ -12,6 +12,7 @@ public class Campaigner extends User{
     private String renew_date;
     private String campaigner_Id;
     private String available_campaigns;
+    private String userId;
     private ResultSet available_campaign_list;
 
     public Campaigner(String user_type, String email, String password, String name , String acc_type) {
@@ -43,6 +44,7 @@ public class Campaigner extends User{
         this.renew_date =rs.getString("renew_date");
         this.acc_type =rs.getString("acc_type");
         this.available_campaigns =rs.getString("available_campaigns");
+        this.userId = rs.getString("account_id");
 
     }
 
@@ -70,6 +72,10 @@ public class Campaigner extends User{
         return pstmt.executeQuery();
     }
 
+    public boolean updateCampaigner(Connection con){
+        return false;
+    }
+
     public String getName() {
         return name;
     }
@@ -92,5 +98,8 @@ public class Campaigner extends User{
 
     public String getCampaigner_Id() {
         return campaigner_Id;
+    }
+    public String getUserId() {
+        return userId;
     }
 }

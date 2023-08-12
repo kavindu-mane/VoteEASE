@@ -1,4 +1,24 @@
+<%@ page import="com.voteease.classes.Campaigner" %>
+<%@ page import="com.voteease.classes.DBConnector" %>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%
+    Campaigner campaigner = (Campaigner) request.getAttribute("campaigner");
+    String campaignerId = campaigner.getCampaigner_Id();
+    String userID = campaigner.getUserId();
+    try {
+        campaigner.loadInto(DBConnector.getConnection(), userID);
+    } catch (Exception e) {
+%>
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!',
+    })
+</script>
+<%
+    }
+%>
 <div class="w-full flex h-full flex-col p-5 py-10">
     <%-- breadcrumb --%>
     <div class="flex items-center mb-3">
@@ -27,8 +47,8 @@
                     name="name"
                     id="name"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                    value="ABC Dream Star"
-                    required/>
+                    value="<%=campaigner.getName()%>"
+                            required/>
         </div>
         <div>
             <label
@@ -41,7 +61,7 @@
                     name="email"
                     id="email"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                    value="dreamstart@abc.com"
+                    value="<%=campaigner.getEmail()%>"
                     required/>
         </div>
         <div>
@@ -55,18 +75,19 @@
                     name="password"
                     id="password"
                     placeholder="••••••••"
+                    required
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"/>
         </div>
         <div>
             <label
-                    for="newpassword"
+                    for="new_password"
                     class="block mb-2 text-sm font-medium text-gray-900"
             >New password
             </label>
             <input
                     type="password"
-                    name="newpassword"
-                    id="newpassword"
+                    name="new_password"
+                    id="new_password"
                     placeholder="••••••••"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"/>
         </div>
@@ -101,3 +122,41 @@
         </button>
     </form>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $("#submit").click((event) => {
+            event.preventDefault();
+            let formData = $("#campaign-form").serialize();
+            formData += "&user=<%=userID%>&campaigner=<%=campaignerId%>"
+            Swal.fire({
+                title:"loading..",
+                html:'<div class="h-20 w-full overflow-hidden flex items-center justify-center"><span class="material-symbols-outlined text-7xl animate-spin text-sky-600">progress_activity</span></div>',
+            });
+
+            $.post("/process/process_campaigner_update.jsp", formData, (data, status) => {
+                data = data.replace(/\s/g, "");
+                Swal.close();
+                if (data === "1"){ // empty value
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Oops...',
+                        text: 'Please fill all fields!',
+                    })
+                }else if(data === "2" || status !== "success"){ // error
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                    })
+                }else if(data === "3"){ // success
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: 'Campaign created successfully!',
+                    })
+                }
+            })
+        });
+    });
+</script>

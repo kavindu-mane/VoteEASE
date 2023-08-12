@@ -34,8 +34,8 @@
 <%
     }
 } else {
-    showStat = showStat.isEmpty() ? "0" : "1";
-    loginReq = loginReq.isEmpty() ? "0" : "1";
+    showStat = showStat == null ? "0" : "1";
+    loginReq = loginReq == null ? "0" : "1";
     Campaign campaign = new Campaign(name, edate, sdate, campaignerId, voteCount, loginReq, showStat);
     try {
         if (campaign.createCampaign(DBConnector.getConnection(), account)) {
