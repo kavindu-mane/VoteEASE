@@ -7,8 +7,8 @@
     <head>
         <meta charset="UTF-8"/>
         <meta
-                name="viewport"
-                content="width=device-width, initial-scale=1.0"/>
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"/>
         <title>Dashboard | VoteEASE</title>
         <%-- common imports --%>
         <jsp:include page="/components/common.html"/>
@@ -58,9 +58,9 @@
                 <div class="bg-slate-900 pt-3 ps-5 pb-5 rounded-b-md">
                     <%-- logo --%>
                     <a
-                            href="${pageContext.request.contextPath}/"
-                            class="text-3xl font-semibold h-fit font-Poppins text-white"
-                    >Vote<span class="text-sky-400 italic">EASE</span></a
+                        href="${pageContext.request.contextPath}/"
+                        class="text-3xl font-semibold h-fit font-Poppins text-white"
+                        >Vote<span class="text-sky-400 italic">EASE</span></a
                     >
                     <%-- dashboard type --%>
                     <h2 class="text-white bold font-Poppins text-xl mt-4 lg:mt-24">Campaigner Dashboard</h2>
@@ -69,9 +69,9 @@
                 <%-- current campaigns --%>
                 <div class="flex ps-5 flex-col mt-5 text-gray-400 text-sm font-bold">
                     <p class="flex items-end">
-            <span class="material-symbols-outlined me-2 text-sky-400 text-[1.2rem]">
-              how_to_vote </span
-            >Available Campaigns
+                        <span class="material-symbols-outlined me-2 text-sky-400 text-[1.2rem]">
+                            how_to_vote </span
+                        >Available Campaigns
                     </p>
                     <div class="ps-3 text-md font-normal mt-3 text-gray-300">
                         <%-- available campaigns --%>
@@ -88,10 +88,10 @@
                         %>
                         <a href="<%=URL %>"
                            class="hover:bg-slate-700 me-4 cursor-pointer rounded-md p-3 flex
-                        items-center">
-              <span class="material-symbols-outlined me-2 text-[1.2rem] <%=iconColor%>">
-                <%=icon%> </span
-              ><span class="truncate"><%=rs.getString("campaign_name")%></span>
+                           items-center">
+                            <span class="material-symbols-outlined me-2 text-[1.2rem] <%=iconColor%>">
+                                <%=icon%> </span
+                            ><span class="truncate"><%=rs.getString("campaign_name")%></span>
                         </a>
                         <%
                                 }
@@ -113,27 +113,27 @@
 
                 <%-- ended campaign --%>
                 <a
-                        href="${pageContext.request.contextPath}/campaigner/ended"
-                        class="flex items-end hover:bg-slate-700 cursor-pointer text-gray-400 font-bold text-sm my-2 ms-3 me-4 p-3 hover:text-gray-300 rounded-md">
-          <span class="material-symbols-outlined text-sky-400 me-2 text-[1.2rem]"> timeline </span
-          >Ended Campaigns
+                    href="${pageContext.request.contextPath}/campaigner/ended"
+                    class="flex items-end hover:bg-slate-700 cursor-pointer text-gray-400 font-bold text-sm my-2 ms-3 me-4 p-3 hover:text-gray-300 rounded-md">
+                    <span class="material-symbols-outlined text-sky-400 me-2 text-[1.2rem]"> timeline </span
+                    >Ended Campaigns
                 </a>
                 <%-- new campaign --%>
                 <a
-                        href="${pageContext.request.contextPath}/campaigner/new"
-                        class="flex items-end hover:bg-slate-700 cursor-pointer text-gray-400 font-bold text-sm my-2 ms-3 me-4 p-3 hover:text-gray-300 rounded-md">
-          <span class="material-symbols-outlined text-sky-400 me-2 text-[1.2rem]"> add_circle </span
-          >New Campaigns
+                    href="${pageContext.request.contextPath}/campaigner/new"
+                    class="flex items-end hover:bg-slate-700 cursor-pointer text-gray-400 font-bold text-sm my-2 ms-3 me-4 p-3 hover:text-gray-300 rounded-md">
+                    <span class="material-symbols-outlined text-sky-400 me-2 text-[1.2rem]"> add_circle </span
+                    >New Campaigns
                 </a>
 
                 <hr class="border-transparent border-b-gray-600 border-b-[0.1rem] my-4"/>
 
                 <%-- settings --%>
                 <a
-                        href="${pageContext.request.contextPath}/campaigner/settings"
-                        class="flex items-end hover:bg-slate-700 cursor-pointer text-gray-400 font-bold text-sm my-2 ms-3 me-4 p-3 hover:text-gray-300 rounded-md">
-          <span class="material-symbols-outlined text-sky-400 me-2 text-[1.2rem]"> settings </span
-          >Account Settings
+                    href="${pageContext.request.contextPath}/campaigner/settings"
+                    class="flex items-end hover:bg-slate-700 cursor-pointer text-gray-400 font-bold text-sm my-2 ms-3 me-4 p-3 hover:text-gray-300 rounded-md">
+                    <span class="material-symbols-outlined text-sky-400 me-2 text-[1.2rem]"> settings </span
+                    >Account Settings
                 </a>
 
                 <%-- account details --%>
@@ -160,7 +160,7 @@
             <div class="w-full pb-[3.25rem]">
                 <%-- header --%>
                 <div
-                        class="text-lg flex items-center justify-end bg-white shadow-xl py-3 px-5 text-sky-600 font-semibold">
+                    class="text-lg flex items-center justify-end bg-white shadow-xl py-3 px-5 text-sky-600 font-semibold">
                     <p class="text-right"><%=campaigner.getName()%>
                     </p>
                     <a class="text-slate-700 ms-5 flex items-center cursor-pointer hover:text-sky-600"
@@ -208,15 +208,15 @@
                 <p class="sm:text-sm text-gray-500 text-xs">
                     &copy; 2023 VoteEASE. All rights reserved. |
                     <a
-                            href="privacy"
-                            class="text-gray-500 hover:text-gray-700"
-                    >Privacy Policy</a
+                        href="privacy"
+                        class="text-gray-500 hover:text-gray-700"
+                        >Privacy Policy</a
                     >
                     |
                     <a
-                            href="terms"
-                            class="text-gray-500 hover:text-gray-700"
-                    >Terms of Service</a
+                        href="terms"
+                        class="text-gray-500 hover:text-gray-700"
+                        >Terms of Service</a
                     >
                 </p>
             </footer>

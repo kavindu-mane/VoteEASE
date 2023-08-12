@@ -42,7 +42,7 @@
         %>
         <div class="flex flex-col w-full items-center justify-center py-10 px-5">
             <div
-                    class="max-w-4xl bg-white p-10 shadow-md drop-shadow-md w-1/2 h-96 flex flex-col justify-center items-center">
+                class="max-w-4xl bg-white p-10 shadow-md drop-shadow-md w-1/2 h-96 flex flex-col justify-center items-center">
                 <h2 class="text-2xl font-semibold mb-3 font-Poppins" id="title-text"></h2>
                 <p class="" id="caption-text"></p>
             </div>
@@ -63,17 +63,17 @@
                         String id = candidates.getString("candidate_id");
                 %>
                 <div
-                        class=
-                                "flex bg-white group p-3 cursor-pointer items-center hover:bg-green-100 shadow-md drop-shadow-md rounded-md ring-1 w-full max-w-4xl my-2">
+                    class=
+                    "flex bg-white group p-3 cursor-pointer items-center hover:bg-green-100 shadow-md drop-shadow-md rounded-md ring-1 w-full max-w-4xl my-2">
                     <div class="flex-col w-full">
                         <h3 class=""> Number / Key : <span> <%=candidates.getString("candidate_number")%> </span></h3>
                         <h3 class=""> Name : <span> <%=candidates.getString("candidate_name")%> </span></h3>
                     </div>
 
                     <span
-                            id="<%=id%>"
-                            onclick="voteAlert(event)"
-                            class="material-symbols-outlined bg-green-100 text-green-500 me-5 group-hover:bg-green-500 group-hover:text-white flex items-center justify-center rounded-full p-3"> check </span>
+                        id="<%=id%>"
+                        onclick="voteAlert(event)"
+                        class="material-symbols-outlined bg-green-100 text-green-500 me-5 group-hover:bg-green-500 group-hover:text-white flex items-center justify-center rounded-full p-3"> check </span>
                 </div>
                 <%
                         } while (candidates.next());
@@ -128,12 +128,12 @@
 
     <script>
         const voteAlert = (event) => {
-            let formData = "candidate="+event.target.id;
+            let formData = "candidate=" + event.target.id;
             $.post("/process/process_vote_candidate.jsp", formData, (data, status) => {
                 data = data.replace(/\s/g, "");
-                if (data == "1"){
+                if (data == "1") {
                     Swal.fire("Voted!", "Voting success.", "success");
-                }else{
+                } else {
                     Swal.fire("Error!", "Something went wrong.", "error");
                 }
             })
