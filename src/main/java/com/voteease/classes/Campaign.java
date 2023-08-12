@@ -37,6 +37,7 @@ public class Campaign {
         this.loginRequired = loginReq;
         this.showStat = showStat;
     }
+    public Campaign(){}
 
     public Boolean createCampaign(Connection con, String accType) throws SQLException {
         String query;
@@ -61,7 +62,8 @@ public class Campaign {
     }
 
     public boolean getInfo(Connection con) throws SQLException {
-        String query = "SELECT * FROM voting_campaign WHERE campaign_id = ?";
+        String query = "SELECT campaign_name , status , campaigner_id , max_votes , login_required , show_stat , DATE_FORMAT(start_datetime, '%Y-%m-%d %h:%i %p') AS start_datetime,  DATE_FORMAT(end_datetime, '%Y-%m-%d %h:%i %p') AS end_datetime  FROM voting_campaign WHERE campaign_id = ?";
+//        DATE_FORMAT(timestamp_column, '%Y-%m-%d %h:%i:%s %p')
         PreparedStatement pstmt = con.prepareStatement(query);
         pstmt.setString(1, campaignID);
         ResultSet rs = pstmt.executeQuery();
@@ -76,7 +78,7 @@ public class Campaign {
             this.showStat = rs.getString("show_stat");
 
             // get available candidates list
-            query = "SELECT candidate_number , candidate_name , vote_count FROM candidate WHERE campaign_id = ?";
+            query = "SELECT candidate_number , candidate_name , vote_count , candidate_id FROM candidate WHERE campaign_id = ?";
             pstmt = con.prepareStatement(query);
             pstmt.setString(1, campaignID);
             candidates = pstmt.executeQuery();
@@ -85,6 +87,50 @@ public class Campaign {
         } else {
             return false;
         }
+    }
+
+    public boolean addCandidate(Connection con ,String number , String name) throws SQLException {
+        String query = "INSERT INTO candidate (candidate_number , candidate_name  , campaign_id ) VALUES (?, ? , ?)";
+        PreparedStatement pstmt = con.prepareStatement(query);
+        pstmt.setString(1, number);
+        pstmt.setString(2, name);
+        pstmt.setString(3, campaignID);
+        int a = pstmt.executeUpdate();
+        return a > 0;
+    }
+
+    public boolean deleteCandidate(Connection con , String id) throws SQLException {
+        String query = "DELETE FROM candidate WHERE candidate_id = ?";
+        PreparedStatement pstmt = con.prepareStatement(query);
+        pstmt.setString(1, id);
+        int a = pstmt.executeUpdate();
+        return a>0;
+    }
+
+    public boolean deleteCampaign(Connection con) throws SQLException {
+        String query = "DELETE FROM voting_campaign WHERE campaign_id = ?";
+        PreparedStatement pstmt = con.prepareStatement(query);
+        pstmt.setString(1, campaignID);
+        int a = pstmt.executeUpdate();
+        return a>0;
+    }
+
+    public boolean startEndCampaign(Connection con , String time) throws SQLException {
+        String newStatus = "";
+        String query = "";
+        if (status.equals("Scheduled")){
+            newStatus = "Started";
+            query = "UPDATE voting_campaign SET status = ? , start_datetime = ? WHERE campaign_id = ?";
+        } else if (status.equals("Started")) {
+            newStatus = "Ended";
+            query = "UPDATE voting_campaign SET status = ? , end_datetime = ? WHERE campaign_id = ?";
+        }
+        PreparedStatement pstmt = con.prepareStatement(query);
+        pstmt.setString(1, newStatus);
+        pstmt.setString(2, time);
+        pstmt.setString(3, campaignID);
+        int a = pstmt.executeUpdate();
+        return a>0;
     }
 
     public String getCampaignID() {

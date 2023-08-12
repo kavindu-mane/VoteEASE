@@ -1,4 +1,14 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="com.voteease.classes.Campaign" %>
+<%@ page import="com.voteease.classes.DBConnector" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+
+<%
+    Campaign campaign = new Campaign(request.getParameter("c"));
+    try {
+        if (campaign.getInfo(DBConnector.getConnection())) {
+%>
+
 <div
         class="w-full flex justify-center items-center h-full flex-col-reverse xl:flex-row py-5">
     <%-- candidate list --%>
@@ -7,67 +17,55 @@
         <div class="flex items-center mb-3">
               <span class="material-symbols-outlined mx-2"> dashboard </span
               ><a
-                href="#"
+                href="${pageContext.request.contextPath}/campaigner"
                 class="hover:underline"
         >Dashboard</a
         >
             <span class="material-symbols-outlined mx-2"> arrow_forward_ios </span
             ><a
-                href="#"
+                href="${pageContext.request.contextPath}/campaigner/campaign?c=<%=campaign.getCampaignID()%>"
                 class="hover:underline truncate"
                 id="campaign-breadcrumb"
-        >Campaign - 1</a
+        ><%=campaign.getCampaignName()%>
+        </a
         >
             <span class="material-symbols-outlined mx-2"> arrow_forward_ios </span
-            ><a
-                href="#"
-                class="hover:underline"
-        >Candidates</a
-        >
-        </div>
-        <div
-                class="h-28 px-10 justify-center bg-sky-700 cursor-pointer hover:bg-sky-900 text-xl text-white font-bold shadow-md drop-shadow-md flex items-center rounded-md">
-            Add new candidate
+            >
+            <p
+                    class="hover:underline"
+            >Candidates</p
+            >
         </div>
 
-        <div
-                class="flex bg-white group p-3 cursor-pointer items-center hover:bg-sky-100 shadow-md drop-shadow-md rounded-md ring-1">
-            <div class="flex-col w-full">
-                <h3 class="">Number/Key : <span>1</span></h3>
-                <h3 class="">Name : <span>Kavindu Manahara</span></h3>
-            </div>
-            <button
-                    onclick="deleteAlert()"
-                    class="text-red-500 me-5 group-hover:bg-red-500 group-hover:text-white bg-red-100 flex items-center justify-center rounded-full h-10 w-10">
-                <span class="material-symbols-outlined"> delete </span>
-            </button>
+        <%
+            ResultSet candidates = campaign.getCandidates();
+            if (!candidates.next()) {
+        %>
+        <div class="italic mt-5 text-center text-gray-500">
+            No candidate data found.
         </div>
+        <%
+        } else {
+            do {
+                String id = candidates.getString("candidate_id");
+        %>
+        <div
+                class=
+                        "flex bg-white group p-3 cursor-pointer items-center hover:bg-sky-100 shadow-md drop-shadow-md rounded-md ring-1">
+            <div class="flex-col w-full">
+                <h3 class=""> Number / Key : <span> <%=candidates.getString("candidate_number")%> </span></h3>
+                <h3 class=""> Name : <span> <%=candidates.getString("candidate_name")%> </span></h3>
+            </div>
 
-        <div
-                class="flex bg-white group p-3 cursor-pointer items-center hover:bg-sky-100 shadow-md drop-shadow-md rounded-md ring-1">
-            <div class="flex-col w-full">
-                <h3 class="">Number/Key : <span>1</span></h3>
-                <h3 class="">Name : <span>Kavindu Manahara</span></h3>
-            </div>
-            <button
-                    onclick="deleteAlert()"
-                    class="text-red-500 me-5 group-hover:bg-red-500 group-hover:text-white bg-red-100 flex items-center justify-center rounded-full h-10 w-10">
-                <span class="material-symbols-outlined"> delete </span>
-            </button>
+            <span
+                    id="<%=id%>"
+                    onclick="deleteAlert(event)"
+                    class="material-symbols-outlined bg-red-100 text-red-500 me-5 group-hover:bg-red-500 group-hover:text-white flex items-center justify-center rounded-full p-3"> delete </span>
         </div>
-
-        <div
-                class="flex bg-white group p-3 cursor-pointer items-center hover:bg-sky-100 shadow-md drop-shadow-md rounded-md ring-1">
-            <div class="flex-col w-full">
-                <h3 class="">Number/Key : <span>1</span></h3>
-                <h3 class="">Name : <span>Kavindu Manahara</span></h3>
-            </div>
-            <button
-                    onclick="deleteAlert()"
-                    class="text-red-500 me-5 group-hover:bg-red-500 group-hover:text-white bg-red-100 flex items-center justify-center rounded-full h-10 w-10">
-                <span class="material-symbols-outlined"> delete </span>
-            </button>
-        </div>
+        <%
+                } while (candidates.next());
+            }
+        %>
     </div>
 
     <%-- edit/add candidate--%>
@@ -89,7 +87,8 @@
                         id="number"
                         class="bg-gray-50 border !outline-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                         placeholder="Candidate number"
-                        required/>
+                        required
+                />
             </div>
             <%-- name --%>
             <div class="my-2">
@@ -105,11 +104,13 @@
                         id="name"
                         class="bg-gray-50 border !outline-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                         placeholder="Candidate name"
-                        required/>
+                        required
+                />
             </div>
             <div class="w-full flex justify-center">
                 <button
                         type="submit"
+                        id="submit"
                         class="bg-sky-600 group hover:bg-sky-700 mt-4 w-72 self-center text-white font-medium rounded-md text-sm px-8 py-2 text-center">
                     Add Candidate
                 </button>
@@ -124,5 +125,84 @@
         if (campaignBreadcrumb.width() > 160) {
             campaignBreadcrumb.addClass("w-40");
         }
+
+        $("#submit").click((event) => {
+            event.preventDefault();
+            let formData = $("#candidate-form").serialize();
+            formData += "&campaign=<%=campaign.getCampaignID()%>"
+            console.log(formData)
+            Swal.fire({
+                title: "loading..",
+                html: '<div class="h-20 w-full overflow-hidden flex items-center justify-center"><span class="material-symbols-outlined text-7xl animate-spin text-sky-600">progress_activity</span></div>',
+            });
+
+            $.post("/process/process_add_candidate.jsp", formData, (data, status) => {
+                data = data.replace(/\s/g, "");
+                Swal.close();
+                if (data === "1") { // empty value
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Oops...',
+                        text: 'Please fill all fields!',
+                    })
+                } else if (data === "2" || status !== "success") { // error
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                    })
+                } else if (data === "3") { // success
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: 'Campaign created successfully!',
+                    })
+                }
+            })
+        })
     });
 </script>
+
+<script>
+    const deleteAlert = (event) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#3085d6",
+            confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                let formData = "candidate="+event.target.id;
+                $.post("/process/process_delete_candidate.jsp", formData, (data, status) => {
+                    data = data.replace(/\s/g, "");
+                    console.log(data)
+                    if (data == "1"){
+                        Swal.fire("Deleted!", "Candidate has been deleted.", "success");
+                    }else{
+                        Swal.fire("Error!", "Something went wrong.", "error");
+                    }
+                })
+            }
+        });
+    };
+</script>
+
+<%
+    }
+} catch (Exception e) {
+%>
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!',
+    })
+    console.log(<%=e%>)
+</script>
+
+<%
+    }
+%>

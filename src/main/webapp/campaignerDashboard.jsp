@@ -61,11 +61,11 @@
                                 ResultSet rs = campaigner.getAvailable_campaign_list();
                                 while (rs.next()) {
                                     String status = rs.getString("status");
-                                    if (status.equals("Active") || status.equals("Scheduled")) {
+                                    if (status.equals("Started") || status.equals("Scheduled")) {
                                         String URL = "/campaigner/campaign?c=" + rs.getString("campaign_id");
-                                        String iconColor = status.equals("Active") ? "text-emerald-400" :
+                                        String iconColor = status.equals("Started") ? "text-emerald-400" :
                                                 "text-yellow-300";
-                                        String icon = status.equals("Active") ? "task_alt" : "timer";
+                                        String icon = status.equals("Started") ? "task_alt" : "timer";
                         %>
                         <a href="<%=URL %>"
                            class="hover:bg-slate-700 me-4 cursor-pointer rounded-md p-3 flex
@@ -199,22 +199,5 @@
             </footer>
         </div>
 
-        <script>
-            const deleteAlert = () => {
-                Swal.fire({
-                    title: "Are you sure?",
-                    text: "You won't be able to revert this!",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#d33",
-                    cancelButtonColor: "#3085d6",
-                    confirmButtonText: "Yes, delete it!",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        Swal.fire("Deleted!", "Your campaign has been deleted.", "success");
-                    }
-                });
-            };
-        </script>
     </body>
 </html>

@@ -10,6 +10,8 @@
         if (campaign.getInfo(DBConnector.getConnection())) {
             String accountType = campaigner.getAcc_type();
             boolean privilegesAvailable = accountType.equals("basic");
+            String loginReq = campaign.getLoginRequired().equals("1") ? "On" : "Off";
+            String showStat = campaign.getShowStat().equals("1") ? "On" : "Off";
             // true campaign id
 %>
 <script>
@@ -104,14 +106,11 @@
                     Link : <span class="font-normal" id="link-span"><%=URL%></span>
                 </p>
                 <p class="">Status : <span class="font-normal"><%=campaign.getStatus()%></span></p>
-                <p class="">Start : <span class="font-normal"><%=campaign.getStartDateTime()%></span></p>
+                <p class="">Start :
+                    <span class="font-normal"><%=campaign.getStartDateTime()%></span></p>
                 <p class="">End : <span class="font-normal"><%=campaign.getEndDateTime()%></span></p>
 
                 <div class="mt-5 flex gap-x-5">
-                    <button
-                            class="rounded py-2 mt-3 w-full bg-green-600 text-white font-semibold hover:bg-green-500">
-                        Edit
-                    </button>
                     <button
                             onclick="copyText()"
                             class="rounded py-2 mt-3 w-full bg-green-600 text-white font-semibold hover:bg-green-500">
@@ -124,22 +123,29 @@
         <div class="my-5 bg-white rounded-md shadow-md drop-shadow-md p-5">
             <h3 class="font-bold text-lg">Campaign Actions</h3>
             <div class="mt-5 flex gap-x-5 ps-5">
+                <%
+                    String newStatus = campaign.getStatus().equals("Started") ? "Ended" : "Started";
+                %>
                 <button
+                        onclick="customAlert('/process/process_status_campaign.jsp' , '<%=newStatus%>' ,
+                        'Campaign has been <%=newStatus%>.')"
                         class="rounded py-2 bg-green-600 text-white font-semibold w-full hover:bg-green-500">
-                    Start
+                    <%=campaign.getStatus().equals("Started")? "End" : "Start"%>
                 </button>
                 <button
-                        onclick="deleteAlert()"
+                        onclick="customAlert('/process/process_delete_campaign.jsp' , 'Deleted' ,
+                        'Candidate has been deleted.')"
                         class="rounded py-2 bg-red-600 text-white font-semibold w-full hover:bg-red-500">
                     Delete
                 </button>
             </div>
 
             <div class="mt-5 flex gap-x-5 ps-5">
-                <button
-                        class="rounded py-2 bg-green-600 text-white font-semibold w-full hover:bg-green-500">
+                <a
+                        href="${pageContext.request.contextPath}/campaigner/campaign/candidates?c=<%=request.getParameter("c")%>"
+                        class="rounded py-2 bg-green-600 text-white font-semibold w-full hover:bg-green-500 text-center">
                     Candidates
-                </button>
+                </a>
                 <button
                         id="news-feed-btn"
                         class="rounded py-2 disabled:bg-gray-400 bg-green-600 text-white font-semibold hover:bg-green-500 disabled:cursor-not-allowed w-full">
@@ -151,14 +157,9 @@
         <div class="my-5 bg-white rounded-md shadow-md drop-shadow-md p-5">
             <h3 class="font-bold text-lg">Campaign Rules</h3>
             <div class="mt-3 ps-5">
-                <p class="">Maximum vote for voter : <span class="font-bold">1</span></p>
-                <p class="">Login required for vote : <span class="font-bold">On</span></p>
-                <p class="">Show statistic after voting : <span class="font-bold">On</span></p>
-                <button
-                        id="change-rules-btn"
-                        class="rounded py-1.5 mt-3 disabled:bg-gray-400 px-3 bg-green-600 text-white font-semibold hover:bg-green-500 disabled:cursor-not-allowed">
-                    Change rules <i class="fa-solid fa-crown text-yellow-300 ms-1 text-sm"></i>
-                </button>
+                <p class="">Maximum vote for voter : <span class="font-bold"><%=campaign.getMaxVotes()%></span></p>
+                <p class="">Login required for vote : <span class="font-bold"><%=loginReq%></span></p>
+                <p class="">Show statistic after voting : <span class="font-bold"><%=showStat%></span></p>
             </div>
         </div>
     </div>
@@ -238,3 +239,31 @@
 <%
     }
 %>
+
+<script>
+    const customAlert = (path , title , body) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            focusCancel:true,
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#3085d6",
+            confirmButtonText: "Yes, do it!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                let formData = "campaign=<%=campaign.getCampaignID()%>&zone="+Intl.DateTimeFormat().resolvedOptions().timeZone;
+                $.post(path, formData, (data, status) => {
+                    data = data.replace(/\s/g, "");
+                    console.log(data)
+                    if (data == "1") {
+                        Swal.fire(title, body, "success");
+                    } else {
+                        Swal.fire("Error!", "Something went wrong.", "error");
+                    }
+                })
+            }
+        });
+    };
+</script>

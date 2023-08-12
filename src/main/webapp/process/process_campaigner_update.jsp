@@ -1,3 +1,6 @@
+<%@ page import="com.voteease.classes.Campaigner" %>
+<%@ page import="com.voteease.classes.DBConnector" %>
+<%@ page import="com.voteease.classes.MD5" %>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%
     String name = request.getParameter("name");
@@ -11,17 +14,49 @@
 
     if (name.isEmpty() || email.isEmpty() || password.isEmpty() || userId.isEmpty() || campaignerId.isEmpty()) {
 %>
-<%=1%> <%--empty--%>
+<%=1%>
 <%
 } else {
-    if (newPassword.isEmpty() && confPassword.isEmpty()) {
-        //
-    } else if (newPassword.equals(confPassword)) {
-        //
-    } else {
+    try {
+        Campaigner campaigner = new Campaigner(name, email, MD5.getMd5(password));
+        if (newPassword.isEmpty() && confPassword.isEmpty()) {
+            if (campaigner.updateCampaigner(DBConnector.getConnection(), userId)) {
 %>
-<%=2%> <%--passowrd not match--%>
+<%=4%>
+<%
+} else {
+%>
+<%=3%>
+<%
+    }
+} else {
+    if (newPassword.equals(confPassword)) {
+        if (campaigner.updateCampaigner(DBConnector.getConnection(), userId)) {
+            if (campaigner.updatePassword(DBConnector.getConnection(), MD5.getMd5(newPassword), userId)) {
+%>
+<%=4%>
+<%
+} else {
+%>
+<%=2%>
+<%
+    }
+} else {
+%>
+<%=2%>
+<%
+    }
+} else {
+%>
+<%=2%>
 <%
         }
     }
+} catch (Exception e) {
+%>
+<%=2%>
+<%
+        }
+    }
+
 %>

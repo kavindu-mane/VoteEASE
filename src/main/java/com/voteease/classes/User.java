@@ -19,7 +19,8 @@ public class User {
     }
 
     public User(String email , String password){
-
+        this.email = email;
+        this.password = password;
     }
 
     public User(){}
@@ -53,6 +54,42 @@ public class User {
         return a > 0;
     }
 
+    public boolean checkAccountAvailable(Connection con , String accountId) throws SQLException {
+        String query = "SELECT password FROM account WHERE account_id = ?";
+        PreparedStatement pstmt = con.prepareStatement(query);
+        pstmt.setString(1, accountId);
+        ResultSet rs = pstmt.executeQuery();
+        rs.next();
+        return rs.getString("password").equals(password);
+    }
+
+    public boolean updateEmail(Connection con , String accID) throws SQLException {
+        String query = "UPDATE account SET email = ? WHERE account_id = ?";
+        PreparedStatement pstmt = con.prepareStatement(query);
+        pstmt.setString(1, email);
+        pstmt.setString(2, accID);
+        int a = pstmt.executeUpdate();
+        return a > 0;
+    }
+
+    public boolean updatePassword(Connection con  , String newPW , String accID) throws SQLException {
+        String query = "UPDATE account SET password = ? WHERE account_id = ?";
+        PreparedStatement pstmt = con.prepareStatement(query);
+        pstmt.setString(1, newPW);
+        pstmt.setString(2, accID);
+        int a = pstmt.executeUpdate();
+        return a > 0;
+    }
+
+    public boolean login(Connection con) throws SQLException {
+        String query = "SELECT password FROM account WHERE email = ?";
+        PreparedStatement pstmt = con.prepareStatement(query);
+        pstmt.setString(1, email);
+        ResultSet rs = pstmt.executeQuery();
+        rs.next();
+        return rs.getString("password").equals(password);
+    }
+
     public void loadInto(Connection con , String userID) throws SQLException {
         String query = "SELECT * FROM  account WHERE account_id = ?";
         PreparedStatement pstmt = con.prepareStatement(query);
@@ -63,7 +100,17 @@ public class User {
             this.email = rs.getString("email");
             this.account_status = rs.getString("account_status");
             this.user_type = rs.getString("user_type");
+            this.password = rs.getString("password");
         }
+    }
+
+    public boolean deleteUser(Connection con , String userId) throws SQLException {
+        String query = "UPDATE account SET account_status = ? WHERE account_id = ?";
+        PreparedStatement pstmt = con.prepareStatement(query);
+        pstmt.setString(1, "Deactivated");
+        pstmt.setString(2, userId);
+        int a = pstmt.executeUpdate();
+        return a>0;
     }
 
     // getters

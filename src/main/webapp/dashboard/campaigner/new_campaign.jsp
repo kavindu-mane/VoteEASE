@@ -138,7 +138,7 @@
                 <button
                         id="submit"
                         type="submit"
-                        class="bg-sky-600 group hover:bg-sky-700 mt-4 w-72 self-center text-white font-medium rounded-md text-sm px-8 py-2 text-center">
+                        class="bg-sky-600 group hover:bg-sky-700 mt-4 w-72 self-center text-white font-medium rounded-md text-sm px-8 py-2 text-center disabled:cursor-not-allowed disabled:bg-gray-400">
                     Create campaign
                 </button>
             </div>
@@ -156,6 +156,11 @@
         sdate.prop("min", localISOTime);
         edate.val(localISOTime);
         edate.prop("min", localISOTime);
+
+
+        <%--if ("<%=campaigner.getAvailable_campaigns()%>" < 1){--%>
+
+        <%--}--%>
 
         $("#submit").click((event) => {
             event.preventDefault();

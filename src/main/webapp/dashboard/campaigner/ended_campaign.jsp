@@ -50,7 +50,8 @@
         <div
                 class="bg-white shadow-md drop-shadow-md p-4 rounded-md text-slate-800 cursor-pointer hover:bg-sky-200 duration-300 ease-in my-3 w-full">
             <h2 class="text-lg">Campaign : <span><%=rs.getString("campaign_name")%></span></h2>
-            <p class="ms-5 mt-1">Ended : <span class=""><%=rs.getString("end_datetime")%></span></p>
+            <p class="ms-5 mt-1 italic">Started : <span class=""><%=rs.getString("start_datetime")%></span></p>
+            <p class="ms-5 mt-1 italic">Ended : <span class=""><%=rs.getString("end_datetime")%></span></p>
         </div>
     </a>
     <%

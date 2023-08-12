@@ -26,6 +26,11 @@ public class Campaigner extends User{
         this.campaigner_Id = campaigner_Id;
     }
 
+    public Campaigner(String name , String email , String password){
+        super(email, password);
+        this.name =  name;
+    }
+
     public void loadInfo(Connection con) throws Exception {
         String query = "SELECT * from voting_campaigner WHERE campaigner_Id = ?";
         String campaignQuery = "SELECT campaign_id , campaign_name , status from voting_campaign WHERE campaigner_Id = ?";
@@ -65,14 +70,22 @@ public class Campaigner extends User{
     }
 
     public ResultSet getEndedCampaigns(Connection con) throws SQLException {
-        String query = "SELECT campaign_id , campaign_name , end_datetime from voting_campaign WHERE campaigner_Id = ? AND status = ?";
+        String query = "SELECT campaign_id , campaign_name , DATE_FORMAT(start_datetime, '%Y-%m-%d %h:%i %p') AS start_datetime,  DATE_FORMAT(end_datetime, '%Y-%m-%d %h:%i %p') AS end_datetime FROM voting_campaign WHERE campaigner_Id = ? AND status = ?";
         PreparedStatement pstmt = con.prepareStatement(query);
         pstmt.setString(1, campaigner_Id);
         pstmt.setString(2, "Ended");
         return pstmt.executeQuery();
     }
 
-    public boolean updateCampaigner(Connection con){
+    public boolean updateCampaigner(Connection con , String accId) throws SQLException {
+        if (super.checkAccountAvailable(con , accId)){
+            String query = "UPDATE voting_campaigner SET organization_name = ? WHERE account_id = ?";
+            PreparedStatement pstmt = con.prepareStatement(query);
+            pstmt.setString(1, name);
+            pstmt.setString(2, accId);
+            int a = pstmt.executeUpdate();
+            return a>0;
+        }
         return false;
     }
 
