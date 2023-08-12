@@ -148,8 +148,6 @@
                             Incorrect username or password
                         </div>
                         <% }}%>
-                        <div class="text-slate-800 text-center mt-3">Don't have account ? <a href="/register"
-                                                                                 class="text-sky-600 mx-1">Register</a>
                     </form>
 
                     <!-- right side -->
