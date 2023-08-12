@@ -100,7 +100,7 @@
             <div class="mt-3 ps-5 font-semibold">
                 <p class="">Name : <span class="font-normal"><%=campaign.getCampaignName()%></span></p>
                 <%
-                    String URL = "http:://localhost:8080/campaign?id=" + campaign.getCampaignID();
+                    String URL = "http:://localhost:8080/campaign?c=" + campaign.getCampaignID();
                 %>
                 <p class="">
                     Link : <span class="font-normal" id="link-span"><%=URL%></span>

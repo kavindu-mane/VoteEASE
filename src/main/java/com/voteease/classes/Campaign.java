@@ -159,6 +159,14 @@ public class Campaign {
         newsFeed = pstmt.executeQuery();
     }
 
+    public boolean updateVote(Connection con ,String candidateId) throws SQLException {
+        String query = "UPDATE candidate SET vote_count = vote_count + 1 WHERE candidate_id = ?";
+        PreparedStatement pstmt = con.prepareStatement(query);
+        pstmt.setString(1, candidateId);
+        int a = pstmt.executeUpdate();
+        return a>0;
+    }
+
     public String getCampaignID() {
         return campaignID;
     }
