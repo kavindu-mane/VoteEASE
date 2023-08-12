@@ -10,7 +10,7 @@
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
         <script type="text/javascript">
             (function () {
-                emailjs.init('public_key');
+                emailjs.init('Ml9God3kvW5D36RpG');
             })();
         </script>
         <%-- common imports --%>

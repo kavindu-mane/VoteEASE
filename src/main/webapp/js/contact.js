@@ -4,7 +4,7 @@ function SendMail(){
         email_id : document.getElementById("email").value,
         message : document.getElementById("message").value
     }
-    emailjs.send("Service_ID","Template_ID",params).then(function (res) {
+    emailjs.send("service_cmc3wk2","template_aysebbp",params).then(function (res) {
         alert("Success! " + res.status);
     })
 }

@@ -4,12 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 public class Voter extends User {
-    private final String name;
+    private String name;
 
     public Voter(String user_type, String email, String password, String name) {
         super(user_type, email, password);
         this.name = name;
     }
+    public Voter(){}
 
     @Override
     public boolean registration(Connection con) throws Exception {
