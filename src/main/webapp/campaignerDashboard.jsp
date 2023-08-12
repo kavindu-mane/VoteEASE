@@ -15,7 +15,26 @@
 
         <%-- create object--%>
         <%
-            Campaigner campaigner = new Campaigner("35432559");
+            Cookie[] ck = request.getCookies();
+            String campaignerID = "";
+            if (ck != null) {
+                for (Cookie cookie : ck) {
+                    if (cookie.getName().equals("userType")) {
+                        if (!cookie.getValue().equals("campaigner")) {
+                            response.sendRedirect("/login");
+                        }
+                    }
+                    if (cookie.getName().equals("campaignerID")) {
+                        campaignerID = cookie.getValue();
+                    }
+                }
+            }
+
+            if (campaignerID.isEmpty()){
+                response.sendRedirect("/login");
+            }
+
+            Campaigner campaigner = new Campaigner(campaignerID);
             try {
                 campaigner.loadInfo(DBConnector.getConnection());
             } catch (Exception e) {
@@ -144,14 +163,15 @@
                         class="text-lg flex items-center justify-end bg-white shadow-xl py-3 px-5 text-sky-600 font-semibold">
                     <p class="text-right"><%=campaigner.getName()%>
                     </p>
-                    <div class="text-slate-700 ms-5 flex items-center cursor-pointer hover:text-sky-600">
+                    <a class="text-slate-700 ms-5 flex items-center cursor-pointer hover:text-sky-600"
+                       href="${pageContext.request.contextPath}/process/process_logout.jsp">
                         <span class="material-symbols-outlined me-2"> logout </span>
-                    </div>
+                    </a>
                 </div>
 
                 <%
                     String currentURL = request.getRequestURI();
-                    request.setAttribute("campaigner" ,campaigner);
+                    request.setAttribute("campaigner", campaigner);
                     switch (currentURL.toLowerCase()) {
                         case "/campaigner/campaign": %>
                 <jsp:include page="/dashboard/campaigner/campaign.jsp"/>

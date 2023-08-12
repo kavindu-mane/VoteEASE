@@ -61,7 +61,7 @@
                     class="grid items-center lg:grid-cols-2 gap-10 w-full place-items-center"
                     >
                     <!-- left side -->
-                    <form action ="loginbackend.jsp" method="POST"
+                    <form action ="/process/loginbackend.jsp" method="POST"
                           class="flex flex-col justify-start w-full sm:w-3/4 text-left md:w-1/2 lg:w-full"
                           >
                         <!-- email -->
@@ -95,30 +95,6 @@
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                 required
                                 />
-                        </div>
-                        <div class="flex mb-6 justify-between items-center">
-                            <!-- remeber -->
-                            <div class="flex items-center">
-                                <div class="flex items-center h-5">
-                                    <input
-                                        id="remember"
-                                        name="remember"
-                                        type="checkbox"
-                                        value="remember"
-                                        class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300"
-                                        required
-                                        />
-                                </div>
-                                <label
-                                    for="remember"
-                                    class="ml-2 text-sm font-medium text-gray-900"
-                                    >Remember me</label
-                                >
-                            </div>
-                            <!-- forget password -->
-                            <a href="/forget" class="ml-2 text-sm font-medium text-gray-900"
-                               >Forget password</a
-                            >
                         </div>
                         <button
                             type="submit" name="login"

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,11 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Admin Dashboard</title>
-    <link href="../css/dasboad.css" rel="stylesheet"/>
-    <jsp:include page="../components/common.html"/>
+    <jsp:include page="../../components/common.html"/>
 </head>
 <body>
-<jsp:include page="../components/header.html"/>
+<jsp:include page="../../components/header.html"/>
 <div class="container mx-auto py-8">
     <h1 class="text-4xl font-bold text-blue-600 mb-4">
         Welcome, [Admin Name]!
@@ -50,12 +49,8 @@
         </ul>
     </div>
 </div>
-<jsp:include page="../components/footer.html"/>
+<jsp:include page="../../components/footer.html"/>
 <script>
-    function voteForCampaign(campaignId) {
-        alert(`You voted for Campaign ${campaignId}`);
-    }
-
     const button5 = document.getElementById("voters");
     button5.addEventListener("click", function () {
         window.location.href = "manageVoters.jsp";

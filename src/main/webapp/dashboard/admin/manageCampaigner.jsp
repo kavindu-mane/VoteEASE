@@ -10,11 +10,11 @@
             href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css"
             rel="stylesheet"
     />
-    <jsp:include page="../components/common.html"/>
+    <jsp:include page="../../components/common.html"/>
 </head>
 
 <body>
-<jsp:include page="../components/header.html"/>
+<jsp:include page="../../components/header.html"/>
 <div class="container mx-auto p-8">
     <h1 class="text-2xl font-extrabold text-blue-900 mb-4">
         Campaigners - VoteEASE
@@ -55,13 +55,13 @@
                         class="p-2 border border-gray-300 flex justify-center space-x-5"
                         >
                         <a
-                            href="../process/activateCampaigner.jsp?id=<%=rs.getInt("account_id")%>"
+                            href="../../process/activateCampaigner.jsp?id=<%=rs.getInt("
                             class="bg-blue-700 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md"
                             >Activate</a
                         >
 
                         <a
-                            href="../process/deactivateCampaigner.jsp?id=<%=rs.getInt("account_id")%>"
+                            href="../../process/deactivateCampaigner.jsp?id=<%=rs.getInt("
                             class="bg-red-600 hover:bg-red-500 text-white font-bold py-2 px-4 rounded-md"
                             >
                             Deactivate
@@ -79,6 +79,6 @@
         </table>
     </div>
 </div>
-<jsp:include page="../components/footer.html"/>
+<jsp:include page="../../components/footer.html"/>
 </body>
 </html>
