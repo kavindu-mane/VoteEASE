@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Admin Dashboard</title>
-    <jsp:include page="../../components/common.html"/>
+    <jsp:include page="components/common.html"/>
 </head>
 <body>
-<jsp:include page="../../components/header.html"/>
+<jsp:include page="components/header.html"/>
 <div class="container mx-auto py-8">
     <h1 class="text-4xl font-bold text-blue-600 mb-4">
         Welcome, [Admin Name]!
@@ -49,21 +49,21 @@
         </ul>
     </div>
 </div>
-<jsp:include page="../../components/footer.html"/>
+<jsp:include page="components/footer.html"/>
 <script>
     const button5 = document.getElementById("voters");
     button5.addEventListener("click", function () {
-        window.location.href = "manageVoters.jsp";
+        window.location.href = "dashboard/admin/manageVoters.jsp";
     });
 
     const button4 = document.getElementById("campaign");
     button4.addEventListener("click", function () {
-        window.location.href = "manageCampaigner.jsp";
+        window.location.href = "dashboard/admin/manageCampaigner.jsp";
     });
 
     const button3 = document.getElementById("logout");
     button3.addEventListener("click", function () {
-        window.location.href = "logout.jsp";
+        window.location.href = "dashboard/admin/logout.jsp";
     });
 </script>
 </body>

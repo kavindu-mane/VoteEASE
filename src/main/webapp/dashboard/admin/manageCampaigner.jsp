@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@page import="com.voteease.classes.DBConnector" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.PreparedStatement" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,13 +58,13 @@
                         class="p-2 border border-gray-300 flex justify-center space-x-5"
                         >
                         <a
-                            href="../../process/activateCampaigner.jsp?id=<%=rs.getInt("
+                            href="../../process/activateCampaigner.jsp?id=<%=rs.getInt()%>"
                             class="bg-blue-700 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md"
                             >Activate</a
                         >
 
                         <a
-                            href="../../process/deactivateCampaigner.jsp?id=<%=rs.getInt("
+                            href="../../process/deactivateCampaigner.jsp?id=<%=rs.getInt()%>"
                             class="bg-red-600 hover:bg-red-500 text-white font-bold py-2 px-4 rounded-md"
                             >
                             Deactivate

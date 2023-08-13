@@ -20,6 +20,13 @@ public class Campaigner extends User{
         this.name = name;
         this.acc_type = acc_type;
         this.renew_date = String.valueOf(LocalDate.now().plusDays(7));
+        if (acc_type.equals("business")){
+            available_campaigns = "5";
+        } else if (acc_type.equals("premium")) {
+            available_campaigns = "15";
+        }else {
+            available_campaigns = "1";
+        }
     }
 
     public Campaigner(String campaigner_Id){
@@ -57,12 +64,13 @@ public class Campaigner extends User{
     public boolean registration(Connection con) throws Exception {
         if (super.registration(con)) {
             super.setAccountID(con);
-            String query = "INSERT INTO voting_campaigner (acc_type , renew_date , organization_name , account_id) VALUES (?, ? , ? , ?)";
+            String query = "INSERT INTO voting_campaigner (acc_type , renew_date , organization_name , account_id , available_campaigns) VALUES (?, ? , ? , ? , ?)";
             PreparedStatement pstmt = con.prepareStatement(query);
             pstmt.setString(1, acc_type);
             pstmt.setString(2, renew_date);
             pstmt.setString(3, name);
             pstmt.setString(4, super.getAccount_id());
+            pstmt.setString(5 , available_campaigns);
             int a = pstmt.executeUpdate();
             return a > 0;
         }
