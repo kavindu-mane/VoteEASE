@@ -39,6 +39,14 @@
                         response.addCookie(cookie3);
                         response.sendRedirect("/campaigner");
                     }else {
+                        query = "SELECT voter_id FROM voter WHERE account_id = ?";
+                        pstmt = con.prepareStatement(query);
+                        pstmt.setString(1, rs.getString("account_id"));
+                        rs = pstmt.executeQuery();
+                        rs.next();
+                        Cookie cookie3 = new Cookie("voterID" , rs.getString("voter_id"));
+                        cookie3.setPath("/");
+                        response.addCookie(cookie3);
                         response.sendRedirect("/voter");
                     }
                 }
